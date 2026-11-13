@@ -100,7 +100,7 @@ def parse_papers(html: str) -> list[dict]:
                 "date": date,
                 "exam_type": exam_type,
                 "url": urljoin(BASE, path),
-                "file": str(PDF_DIR / filename),
+                "file": (PDF_DIR / filename).relative_to(DATA_DIR.parent).as_posix(),
                 "archive_name": archive_name,
             }
         )

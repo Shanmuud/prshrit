@@ -99,7 +99,7 @@ def main(argv: list[str] | None = None) -> int:
 
     out: list[dict] = []
     for paper in papers:
-        qs = extract_questions(Path(paper["file"]))
+        qs = extract_questions(ROOT / paper["file"])
         for q in qs:
             qid = f"{paper['id']}-{q['qno']}"
             if qid in overrides:

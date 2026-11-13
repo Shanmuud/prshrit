@@ -6,7 +6,7 @@
     "date": "2026-01-03",
     "exam_type": "Makeup",
     "url": "https://paper.shrit.in/authoritative/MIT%202021-26/MIT%202025-26%20QPs%203rd%20March%202026/December%202025%20and%20January%202026%20(Makeup)/MIT%20Sem%201%20to%20Sem%207%20QPs/Semester%203/CSS_2101-Data%20Structures.pdf",
-    "file": "C:\\Users\\Rishi Kanth\\qp-tagger\\data\\pdfs\\8b4d5c3fd01cac31_CSS_2101-Data_Structures.pdf"
+    "file": "data/pdfs/8b4d5c3fd01cac31_CSS_2101-Data_Structures.pdf"
   },
   {
     "id": "d3fd200e4d245bfb",
@@ -15,7 +15,7 @@
     "date": "2025-11-20",
     "exam_type": "End-sem",
     "url": "https://paper.shrit.in/authoritative/MIT%202021-26/MIT%202025-26%20QPs%203rd%20March%202026/November%20and%20December%202025%20(Regular)/MIT%20Sem%201%20to%20Sem%207%20QPs/Semester%203/CSS-2101-Data%20Structures.pdf",
-    "file": "C:\\Users\\Rishi Kanth\\qp-tagger\\data\\pdfs\\d3fd200e4d245bfb_CSS-2101-Data_Structures.pdf"
+    "file": "data/pdfs/d3fd200e4d245bfb_CSS-2101-Data_Structures.pdf"
   },
   {
     "id": "ac063325b357184c",
@@ -24,6 +24,6 @@
     "date": "2024-12-26",
     "exam_type": "Makeup",
     "url": "https://paper.shrit.in/authoritative/MIT%202021-26/2024-2025/QP/Sem1%20Sem3%20and%20Sem5%20January%202025%20and%20February%202025%20(Makeup)/3%20Sem%20January%202025%20(Makeup)/CSE%202122-CSE_2122%20-%20DATA%20STRUCTURES.pdf",
-    "file": "C:\\Users\\Rishi Kanth\\qp-tagger\\data\\pdfs\\ac063325b357184c_CSE_2122-CSE_2122_-_DATA_STRUCTURES.pdf"
+    "file": "data/pdfs/ac063325b357184c_CSE_2122-CSE_2122_-_DATA_STRUCTURES.pdf"
   }
 ]
