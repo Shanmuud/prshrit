@@ -23,9 +23,9 @@
     "cognitive_level": "Application",
     "topic": "Stack",
     "subtopic": "Array/list implementation",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "leetcode": [],
-    "reason": "Initialize fixed partitions for four stacks in one array, then write push and pop for stack i with boundary-based overflow and underflow checks. These are standard single operations; the multiple-stack indexing adds bookkeeping, not algorithmic difficulty. No catalog problem implements multiple stacks in one array."
+    "reason": "Implementing four stacks requires a consistent shared-array partition scheme across initialization, push and pop, with distinct empty and full bounds for every stack, including the last partition. This is a complete adaptation of a stack implementation with several coupled index invariants, rather than one supplied push/pop operation. Fixed partitions suffice; dynamic space sharing is not required, so Hard is not justified."
   },
   {
     "id": "8b4d5c3fd01cac31-1C",
@@ -36,7 +36,7 @@
     "co": "CO1",
     "cognitive_level": "Application",
     "topic": "Data structure fundamentals",
-    "subtopic": "ADTs and interfaces",
+    "subtopic": "Nested structures",
     "difficulty": "Easy",
     "leetcode": [],
     "reason": "Declare a nested C struct (employee containing a date struct) and read and print its fields. This is basic user-defined record syntax with no algorithm. No coding-problem match applies."
@@ -45,7 +45,7 @@
     "id": "8b4d5c3fd01cac31-2A",
     "paper_id": "8b4d5c3fd01cac31",
     "qno": "2A",
-    "text": "Write a function to convert an infix expression to postfix. Include the following functions as per the\nprototype.\ni) int InStackPrecedence(char op) ; to return the precedence of operator within the stack\nii) int IncomingPrecedence(char op); to return the precedence of the incoming operator.\niii) void Infix_Postfix(char infix[], char postfix[]); to convert given infix expression to postfix.\nMain function not required.\nNote: The infix expression may include ONLY the following operators (listed in the order of their\nprecedence):\n\u2022 ^ (exponentiation) \u2192 right associative\n\u2022 * (multiplication), / (division) \u2192 left associative\n\u2022 + (addition), - (subtraction) \u2192 left associative",
+    "text": "Write a function to convert an infix expression to postfix. Include the following functions as per the\nprototype.\ni) int InStackPrecedence(char op) ; to return the precedence of operator within the stack\nii) int IncomingPrecedence(char op); to return the precedence of the incoming operator.\niii) void Infix_Postfix(char infix[], char postfix[]); to convert given infix expression to postfix.\nMain function not required.\nNote: The infix expression may include ONLY the following operators (listed in the order of their\nprecedence):\n• ^ (exponentiation) → right associative\n• * (multiplication), / (division) → left associative\n• + (addition), - (subtraction) → left associative",
     "marks": 5,
     "co": "CO3",
     "cognitive_level": "Application",
@@ -221,7 +221,7 @@
     "id": "8b4d5c3fd01cac31-5B",
     "paper_id": "8b4d5c3fd01cac31",
     "qno": "5B",
-    "text": "A hospital wants to maintain a dynamic list of patients waiting for a doctor.\nSince the number of patients keeps changing (patients arrive and get treated at different times), a\nDoubly Linked List is chosen to manage this queue efficiently.\nEach node in the list should store:\n\u2022 Patient ID\n\u2022 Patient Name\nDesign the C functions for the following operations:\ni) Adding a new patient at the end of the list.\nii) Removing a patient from the front (when treatment is done).\nDisplaying the current waiting list.",
+    "text": "A hospital wants to maintain a dynamic list of patients waiting for a doctor.\nSince the number of patients keeps changing (patients arrive and get treated at different times), a\nDoubly Linked List is chosen to manage this queue efficiently.\nEach node in the list should store:\n• Patient ID\n• Patient Name\nDesign the C functions for the following operations:\ni) Adding a new patient at the end of the list.\nii) Removing a patient from the front (when treatment is done).\nDisplaying the current waiting list.",
     "marks": 3,
     "co": "CO2",
     "cognitive_level": "Application",
@@ -288,7 +288,7 @@
     "co": "CO1",
     "cognitive_level": "Analysis",
     "topic": "Data structure fundamentals",
-    "subtopic": "ADTs and interfaces",
+    "subtopic": "Nested structures",
     "difficulty": "Easy",
     "leetcode": [],
     "reason": "Define a nested C struct (Student containing Date), then read and print it. This is basic record definition and I/O. The referenced table was lost in extraction, so the exact fields are unknown; the tag is unaffected."
@@ -303,9 +303,9 @@
     "cognitive_level": "Application",
     "topic": "Stack",
     "subtopic": "Push/pop/peek",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "leetcode": [],
-    "reason": "Explain the standard two-stack undo/redo scheme with short push/pop snippets: undo moves an item from the undo stack to the redo stack, and a new edit clears the redo stack. The question names the structure, so only familiar stack operations are needed. Rated at the lower bound of Easy/Medium. #155 Min Stack is not analogous."
+    "reason": "Correct undo/redo code must coordinate two histories, transfer operations or states in the right direction, and invalidate redo history after a new edit. Naming stacks does not supply this application logic. The rubric rates combining familiar structures or adapting a known algorithm Medium; these obligations go beyond isolated push/pop snippets."
   },
   {
     "id": "d3fd200e4d245bfb-2B",
@@ -316,7 +316,7 @@
     "co": "CO4",
     "cognitive_level": "Application",
     "topic": "Trees",
-    "subtopic": "Threaded tree traversal",
+    "subtopic": "Threaded tree construction",
     "difficulty": "Easy",
     "leetcode": [],
     "reason": "Build the BST from the given keys, then show how null left/right links become inorder predecessor/successor threads, with tag bits and a head node. This is a diagram trace. #94 does not require permanent threading, so no catalog match."
@@ -429,7 +429,7 @@
     "id": "d3fd200e4d245bfb-5A",
     "paper_id": "d3fd200e4d245bfb",
     "qno": "5A",
-    "text": "A small delivery network is represented as an undirected graph. The network has six hubs labelled\nA, B, C, D, E, F. The direct connections between hubs are: A-B, A-C, B-D, C-E, D-F, E-F, B-C, D-E\nNote: Whenever there is a choice between multiple unvisited neighbours in DFS or BFS, hubs\nshould be selected in alphabetical order.\ni. If a delivery inspection follows Depth First Search (DFS) starting from hub A, which hub will be\ninspected last? Explain your reasoning.\nii. If a delivery inspection follows Breadth First Search (BFS) starting from hub A, which hub is the\nfarthest from A in terms of the number of connections?\niii. Determine the number of connected subnetworks in this network.\nNow, remove the link E-F and D-F from the network. How many connected subnetworks exist after\nthese removals?\niv. If all connections become one-way (directed) in the order: A\u2192 B\u2192 D\u2192F, A\u2192C\u2192E\u2192F, B\u2192C,\nD\u2192 E, can DFS starting from A reach all hubs? Provide a brief explanation.\nv. Which change in the underlying data structure (queue \u2194 stack) would make BFS behave like\n\nDFS?",
+    "text": "A small delivery network is represented as an undirected graph. The network has six hubs labelled\nA, B, C, D, E, F. The direct connections between hubs are: A-B, A-C, B-D, C-E, D-F, E-F, B-C, D-E\nNote: Whenever there is a choice between multiple unvisited neighbours in DFS or BFS, hubs\nshould be selected in alphabetical order.\ni. If a delivery inspection follows Depth First Search (DFS) starting from hub A, which hub will be\ninspected last? Explain your reasoning.\nii. If a delivery inspection follows Breadth First Search (BFS) starting from hub A, which hub is the\nfarthest from A in terms of the number of connections?\niii. Determine the number of connected subnetworks in this network.\nNow, remove the link E-F and D-F from the network. How many connected subnetworks exist after\nthese removals?\niv. If all connections become one-way (directed) in the order: A→ B→ D→F, A→C→E→F, B→C,\nD→ E, can DFS starting from A reach all hubs? Provide a brief explanation.\nv. Which change in the underlying data structure (queue ↔ stack) would make BFS behave like\n\nDFS?",
     "marks": 5,
     "co": "CO5",
     "cognitive_level": "Analysis",
@@ -449,7 +449,7 @@
     "cognitive_level": "Application",
     "topic": "Doubly LL",
     "subtopic": "Insertion/deletion",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "leetcode": [
       {
         "id": 707,
@@ -457,7 +457,7 @@
         "slug": "design-linked-list"
       }
     ],
-    "reason": "Implement queue operations on a DLL: tail insertion (register), head deletion (serve), and arbitrary deletion by id with head/tail fix-ups. These are familiar list operations; rated Easy at the boundary, and remove-by-id case handling is the main work. The given struct lacks a prev pointer, which conflicts with 'doubly linked'; this is likely a paper or extraction error. #707 is a partial match when done with a doubly linked representation."
+    "reason": "This program combines FIFO registration/service with deletion by arbitrary patient ID. It must keep both directions and the queue endpoints consistent for interior, head, tail, singleton and empty-list cases. The rubric assigns standard algorithms with several interacting cases Medium. Retain the existing caveat that the supplied struct omits prev; do not silently assume the contradictory representation is resolved."
   },
   {
     "id": "d3fd200e4d245bfb-5C",
@@ -510,7 +510,7 @@
     "co": null,
     "cognitive_level": null,
     "topic": "Recursion",
-    "subtopic": "Base case and call tracing",
+    "subtopic": "Recursion versus iteration",
     "difficulty": "Easy",
     "leetcode": [],
     "reason": "A conceptual comparison of the implicit call stack in recursion with an explicit stack in iterative code, covering overhead, stack-overflow depth and readability. It is a definition-level task. Stack is a secondary topic, but no stack operations are assessed."
@@ -519,7 +519,7 @@
     "id": "ac063325b357184c-2A",
     "paper_id": "ac063325b357184c",
     "qno": "2A",
-    "text": "Write a C program that does the following tasks:\ni) Define a function reverseArray that takes two parameters:\n\n\u2022 A pointer to an integer array.\n\u2022 An integer representing the size of the array.\n\nii) Inside reverseArray, use pointers to reverse the elements of the array\niii) In main, dynamically allocate an integer array of size 5, assign values 10, 20, 30, 40, 50 to the array,\nand call reverseArray() to reverse the elements.\n(1+2+1 = 4 marks)",
+    "text": "Write a C program that does the following tasks:\ni) Define a function reverseArray that takes two parameters:\n\n• A pointer to an integer array.\n• An integer representing the size of the array.\n\nii) Inside reverseArray, use pointers to reverse the elements of the array\niii) In main, dynamically allocate an integer array of size 5, assign values 10, 20, 30, 40, 50 to the array,\nand call reverseArray() to reverse the elements.\n(1+2+1 = 4 marks)",
     "marks": 4,
     "co": null,
     "cognitive_level": null,
@@ -545,15 +545,15 @@
     "cognitive_level": null,
     "topic": "Queue",
     "subtopic": "Priority queue",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "leetcode": [],
-    "reason": "Write a sorted-order insert and a remove-front for a priority queue held in an array or list, then trace four inserts and two removals. Both operations are simple and no heap is required. The catalog has no direct priority-queue ADT problem."
+    "reason": "The required program maintains a priority-ordered container across insertion and removal, rather than merely tracing dequeue order. Correct ordered insertion and highest-priority removal must agree on ordering and endpoint/empty cases. This fits a standard implementation with several invariants; no heap or optimal complexity requirement supports Hard."
   },
   {
     "id": "ac063325b357184c-2C",
     "paper_id": "ac063325b357184c",
     "qno": "2C",
-    "text": "A school maintains a linked list to keep track of students in the order they register for an event.\nImplement functions to manage this linked list.\ni) Write a function addStudent that takes a student's name and adds them to the end of the linked list.\nii) Write a function removeStudent that takes a student's name and removes the student from the list,\nupdating the list order.\niii) Use your functions to perform the following:\n\n\u2022 Add students \"Alice\", \"Bob\", \"Charlie\", and \"Diana\" in order, showing the list after each\naddition.\nRemove \"Bob\" and \"Charlie\" from the list, showing the list order after each removal.",
+    "text": "A school maintains a linked list to keep track of students in the order they register for an event.\nImplement functions to manage this linked list.\ni) Write a function addStudent that takes a student's name and adds them to the end of the linked list.\nii) Write a function removeStudent that takes a student's name and removes the student from the list,\nupdating the list order.\niii) Use your functions to perform the following:\n\n• Add students \"Alice\", \"Bob\", \"Charlie\", and \"Diana\" in order, showing the list after each\naddition.\nRemove \"Bob\" and \"Charlie\" from the list, showing the list order after each removal.",
     "marks": 3,
     "co": null,
     "cognitive_level": null,
@@ -628,9 +628,9 @@
     "from_image": true,
     "topic": "Trees",
     "subtopic": "Threaded tree traversal",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "leetcode": [],
-    "reason": "Define a threaded node with tag bits and search by inorder traversal using threads: follow the thread when the right tag is set, otherwise go to the leftmost node of the right subtree. The tree is prebuilt, so this is a familiar traversal. The rating sits on the Easy/Medium boundary because of the tag-bit successor logic. The figure was reduced to text, and the thread links are not shown. No catalog problem requires threads."
+    "reason": "Implementing search through threads requires defining link/tag semantics and correctly choosing between a successor thread and descent to the leftmost node of a real right subtree, including termination. These representation-dependent cases distinguish it from a basic recursive traversal. A prebuilt tree removes thread construction, but does not remove the multi-case traversal implementation."
   },
   {
     "id": "ac063325b357184c-4B",
@@ -657,9 +657,9 @@
     "cognitive_level": null,
     "topic": "Queue",
     "subtopic": "Priority queue",
-    "difficulty": "Easy",
+    "difficulty": "Medium",
     "leetcode": [],
-    "reason": "Write enqueue-by-priority and dequeue functions for task scheduling. Fairness is mentioned as motivation, but only priority ordering is required. It is a 2-mark implementation of basic priority-queue operations, and the catalog has no direct priority-queue ADT problem."
+    "reason": "The student must translate scheduling requirements into priority-aware C operations and choose a representation and service policy. That is a design/adaptation task under the rubric, not a supplied priority trace or isolated queue operation. The old reason uses the two-mark allocation to support Easy, which the rubric explicitly disallows. Do not assume a particular aging or fairness algorithm absent from the prompt; the priority-based design alone supports Medium."
   },
   {
     "id": "ac063325b357184c-5A",
@@ -672,13 +672,7 @@
     "topic": "Trees",
     "subtopic": "Binary tree properties",
     "difficulty": "Medium",
-    "leetcode": [
-      {
-        "id": 104,
-        "title": "Maximum Depth of Binary Tree",
-        "slug": "maximum-depth-of-binary-tree"
-      }
-    ],
+    "leetcode": [],
     "reason": "Compute the binary tree diameter (longest leaf-to-leaf path) with a recursive height function that also tracks the best left+right sum at each node. This adapts a known algorithm. Latency is mentioned but no edge weights are given, so path length is taken as edge count. #104 is a partial match: it teaches the height recursion that the diameter calculation builds on."
   },
   {

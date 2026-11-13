@@ -1,4 +1,4 @@
-// Shape of export/<subject>.json (schema 1). No runtime code, no dependencies.
+// Data shape of data/<code>.json (schema 1).
 
 export type Difficulty = "Easy" | "Medium" | "Hard";
 
@@ -22,9 +22,9 @@ export interface TaggedQuestion {
 }
 
 export interface TaggedPaper {
-  pdf_path: string; // same path the site serves, e.g. "/authoritative/MIT 2021-26/.../CSS-2101-Data Structures.pdf"
+  pdf_path: string; // same path the site serves: "/authoritative/.../CSS-2101-Data Structures.pdf"
   code: string;
-  date: string | null; // ISO yyyy-mm-dd
+  date: string | null; // yyyy-mm-dd
   exam_type: string | null;
   questions: TaggedQuestion[];
 }
