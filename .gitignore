@@ -1,0 +1,7 @@
+# source PDFs and raw page dumps belong to the archive, re-download with scrape.py
+data/pdfs/
+data/_page.html
+__pycache__/
+*.pyc
+outbox/
+extract_cursor_v1.py

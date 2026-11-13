@@ -1,0 +1,156 @@
+<title>DS Question Map</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* Layout: answer-sheet column. Topic heat list on top (doubles as filter), then question slips grouped by topic. */
+:root{
+  --bg:#f5f7fa; --paper:#ffffff; --ink:#17202e; --muted:#5d6878; --line:#dde2ea; --accent:#2b54c9; --accent-soft:#e6ecfb;
+  --easy:#138a5b; --easy-bg:#e2f4ec; --med:#b8740a; --med-bg:#fbefd9; --hard:#c4343f; --hard-bg:#fbe3e5;
+  --display:"Space Grotesk",system-ui,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#10141b; --paper:#171d27; --ink:#e3e8f0; --muted:#97a2b3; --line:#2a3240; --accent:#7f9dff; --accent-soft:#1f2a45;
+  --easy:#4fd19a; --easy-bg:#12301f; --med:#f0b44e; --med-bg:#33270f; --hard:#ff7a83; --hard-bg:#3a1a1e; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#10141b; --paper:#171d27; --ink:#e3e8f0; --muted:#97a2b3; --line:#2a3240; --accent:#7f9dff; --accent-soft:#1f2a45;
+  --easy:#4fd19a; --easy-bg:#12301f; --med:#f0b44e; --med-bg:#33270f; --hard:#ff7a83; --hard-bg:#3a1a1e; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 var(--body)}
+.wrap{max-width:920px;margin:0 auto;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:28px}
+header{display:grid;gap:6px}
+.eyebrow{font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font:700 clamp(26px,5vw,36px)/1.1 var(--display);margin:0;text-wrap:balance}
+h2{font:500 18px/1.2 var(--display);margin:0}
+.sub{color:var(--muted);margin:0;max-width:65ch}
+.sub a{color:var(--accent)}
+.papers{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.papers a{font:500 12px/1 var(--mono);color:var(--muted);text-decoration:none;border:1px solid var(--line);padding:6px 9px;border-radius:4px;background:var(--paper)}
+.papers a:hover{color:var(--accent);border-color:var(--accent)}
+section.heat{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:18px;display:grid;gap:12px}
+.heat-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+.legend{display:flex;gap:14px;font-size:12px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:5px;vertical-align:-1px}
+.rows{display:grid;gap:4px}
+.row{display:grid;grid-template-columns:minmax(110px,190px) 1fr 70px;gap:12px;align-items:center;padding:6px 8px;border-radius:6px;border:0;background:none;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.row:hover{background:var(--accent-soft)}
+.row[aria-pressed="true"]{background:var(--accent-soft);box-shadow:inset 3px 0 0 var(--accent)}
+.row:focus-visible,.chip:focus-visible,.slip summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.row .name{font-weight:500;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar{display:flex;height:14px;border-radius:3px;overflow:hidden;background:var(--line)}
+.bar span{display:block;height:100%}
+.row .n{font:500 13px/1 var(--mono);color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.filters{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filters .lab{font:500 12px/1 var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-right:2px}
+.chip{border:1px solid var(--line);background:var(--paper);color:var(--ink);font:500 13px/1 var(--body);padding:7px 11px;border-radius:999px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.count{margin-left:auto;font:13px var(--mono);color:var(--muted)}
+.group{display:grid;gap:10px}
+.group h2 small{font:400 13px var(--mono);color:var(--muted);margin-left:8px}
+.slip{background:var(--paper);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.slip summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:start;padding:14px 16px}
+.slip summary::-webkit-details-marker{display:none}
+.qno{font:500 13px/1.4 var(--mono);color:var(--accent);white-space:nowrap}
+.qno small{display:block;color:var(--muted);font-size:11px}
+.gist{min-width:0}
+.gist .st{font-weight:600}
+.gist p{margin:2px 0 0;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.slip[open] .gist p{display:none}
+.side{display:grid;gap:6px;justify-items:end}
+.pill{font:600 12px/1 var(--body);padding:5px 9px;border-radius:999px;white-space:nowrap}
+.pill.Easy{color:var(--easy);background:var(--easy-bg)} .pill.Medium{color:var(--med);background:var(--med-bg)} .pill.Hard{color:var(--hard);background:var(--hard-bg)}
+.marks{font:12px var(--mono);color:var(--muted);white-space:nowrap}
+.body{padding:0 16px 16px;display:grid;gap:12px;border-top:1px dashed var(--line);padding-top:14px}
+.qtext{white-space:pre-wrap;font:14px/1.6 var(--body);margin:0;max-width:72ch;overflow-wrap:anywhere}
+.meta{display:flex;flex-wrap:wrap;gap:6px 16px;font:12px var(--mono);color:var(--muted)}
+.why{font-size:13px;color:var(--muted);margin:0}
+.lc{display:flex;flex-wrap:wrap;gap:8px}
+.lc a{font:500 13px/1 var(--body);color:var(--accent);text-decoration:none;border:1px solid var(--accent);padding:6px 10px;border-radius:4px}
+.lc a:hover{background:var(--accent-soft)}
+.empty{color:var(--muted);text-align:center;padding:40px 0}
+@media (max-width:560px){.row{grid-template-columns:100px 1fr 44px}.slip summary{grid-template-columns:1fr auto}.qno{grid-column:1/-1}}
+@media (prefers-reduced-motion:no-preference){.bar span{transition:width .3s}}
+</style>
+
+<div class="wrap">
+  <header>
+    <div class="eyebrow" id="eyebrow">MIT Manipal · CSE · Sem 3</div>
+    <h1 id="h1">Data Structures question map</h1>
+    <p class="sub">Every question from the past papers on <a href="https://paper.shrit.in" target="_blank" rel="noopener">paper.shrit.in</a>, tagged by topic, with a LeetCode-style difficulty and similar LeetCode problems to practise. Click a topic to filter.</p>
+    <div class="papers" id="papers"></div>
+  </header>
+
+  <section class="heat" aria-label="Topics by number of questions">
+    <div class="heat-head"><h2>How often each topic is asked</h2>
+      <div class="legend"><span><i style="background:var(--easy)"></i>Easy</span><span><i style="background:var(--med)"></i>Medium</span><span><i style="background:var(--hard)"></i>Hard</span></div>
+    </div>
+    <div class="rows" id="rows"></div>
+  </section>
+
+  <div class="filters" id="filters"></div>
+  <div id="list" class="group-list" style="display:grid;gap:28px"></div>
+</div>
+
+<script id="data" type="application/json">/*DATA*/</script>
+<script>
+const D = JSON.parse(document.getElementById('data').textContent);
+const Q = D.questions, P = Object.fromEntries(D.papers.map(p=>[p.id,p]));
+const DIFFS = ['Easy','Medium','Hard'];
+const state = {topic:null, diff:null, paper:null};
+const esc = s => String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const short = p => `${p.exam_type||''} ${(p.date||'').slice(0,7)}`.trim();
+
+if (D.subject) { document.getElementById('h1').textContent = D.subject + ' question map'; document.title = D.subject_short || 'DS Question Map'; }
+if (D.eyebrow) document.getElementById('eyebrow').textContent = D.eyebrow;
+document.getElementById('papers').innerHTML = D.papers.map(p=>`<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.code)} · ${esc(short(p))} ↗</a>`).join('');
+
+function topics(){
+  const m = {};
+  for (const q of Q){ (m[q.topic] ??= {Easy:0,Medium:0,Hard:0,n:0}); m[q.topic][q.difficulty]++; m[q.topic].n++; }
+  return Object.entries(m).sort((a,b)=>b[1].n-a[1].n);
+}
+function renderRows(){
+  const t = topics(), max = t[0]?.[1].n || 1;
+  document.getElementById('rows').innerHTML = t.map(([name,c])=>`
+    <button class="row" data-t="${esc(name)}" aria-pressed="${state.topic===name}">
+      <span class="name" title="${esc(name)}">${esc(name)}</span>
+      <span class="bar" style="width:${(c.n/max*100).toFixed(1)}%">${DIFFS.map(d=>c[d]?`<span style="width:${c[d]/c.n*100}%;background:var(--${d==='Medium'?'med':d.toLowerCase()})" title="${c[d]} ${d}"></span>`:'').join('')}</span>
+      <span class="n">${c.n} q</span>
+    </button>`).join('');
+}
+function renderFilters(){
+  const chip = (k,v,label) => `<button class="chip" data-k="${k}" data-v="${esc(v)}" aria-pressed="${state[k]===v}">${esc(label)}</button>`;
+  document.getElementById('filters').innerHTML =
+    `<span class="lab">Difficulty</span>${DIFFS.map(d=>chip('diff',d,d)).join('')}
+     <span class="lab" style="margin-left:10px">Paper</span>${D.papers.map(p=>chip('paper',p.id,short(p))).join('')}
+     <span class="count" id="count"></span>`;
+}
+function renderList(){
+  const qs = Q.filter(q=>(!state.topic||q.topic===state.topic)&&(!state.diff||q.difficulty===state.diff)&&(!state.paper||q.paper_id===state.paper));
+  document.getElementById('count').textContent = `${qs.length} of ${Q.length} questions`;
+  const order = topics().map(t=>t[0]), g = {};
+  for (const q of qs) (g[q.topic] ??= []).push(q);
+  const html = order.filter(t=>g[t]).map(t=>`
+    <div class="group"><h2>${esc(t)}<small>${g[t].length}</small></h2>
+    ${g[t].map(q=>{ const p=P[q.paper_id]||{}; return `
+      <details class="slip"><summary>
+        <span class="qno">Q${esc(q.qno)}<small>${esc(short(p))}</small></span>
+        <span class="gist"><span class="st">${esc(q.subtopic||q.topic)}</span><p>${esc(q.text)}</p></span>
+        <span class="side"><span class="pill ${esc(q.difficulty)}">${esc(q.difficulty)}</span><span class="marks">${q.marks!=null?esc(q.marks)+' marks':''}</span></span>
+      </summary>
+      <div class="body">
+        <p class="qtext">${esc(q.text)}</p>
+        <div class="meta">${q.co?`<span>${esc(q.co)}</span>`:''}${q.cognitive_level?`<span>${esc(q.cognitive_level)}</span>`:''}<span>${esc(p.title||'')}</span></div>
+        ${q.reason?`<p class="why">Why ${esc(q.difficulty)}: ${esc(q.reason)}</p>`:''}
+        ${(q.leetcode||[]).length?`<div class="lc">${q.leetcode.map(l=>`<a href="https://leetcode.com/problems/${esc(l.slug)}/" target="_blank" rel="noopener">${esc(l.id)}. ${esc(l.title)} ↗</a>`).join('')}</div>`:''}
+      </div></details>`}).join('')}
+    </div>`).join('');
+  document.getElementById('list').innerHTML = html || '<p class="empty">No questions match these filters. Clear one to see more.</p>';
+}
+function render(){ renderRows(); renderFilters(); renderList(); }
+document.addEventListener('click', e=>{
+  const r = e.target.closest('.row'); if (r){ state.topic = state.topic===r.dataset.t?null:r.dataset.t; render(); return; }
+  const c = e.target.closest('.chip'); if (c){ const k=c.dataset.k,v=c.dataset.v; state[k]=state[k]===v?null:v; render(); }
+});
+render();
+</script>
