@@ -149,7 +149,7 @@ def main(argv: list[str] | None = None) -> int:
 
     PDF_DIR.mkdir(parents=True, exist_ok=True)
     for p in papers:
-        dest = Path(p["file"])
+        dest = DATA_DIR.parent / p["file"]
         download_pdf(p["url"], dest)
         iso = exam_date_iso_from_pdf(dest)
         if iso:
