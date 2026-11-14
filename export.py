@@ -30,15 +30,25 @@ def reflow(text: str) -> str:
     return "\n".join(out)
 
 
-def main(subject: str = "CSS 2101") -> int:
-    papers = json.loads((ROOT / "data/papers.json").read_text(encoding="utf-8"))
-    tagged = json.loads((ROOT / "data/tagged.json").read_text(encoding="utf-8"))
-    out = {"schema": 1, "subject": subject, "papers": []}
+def clean(q: dict) -> dict:
+    row = {k: (reflow(q[k]) if k == "text" else q.get(k)) for k in KEEP}
+    row["leetcode"] = [{**l, "id": int(l["id"])} for l in row.get("leetcode") or []]
+    return row
+
+
+def main(subject: str = "CSS 2101", data_dir: str = "data", *codes: str) -> int:
+    """export.py <SUBJECT> [data dir] [course codes to keep, default: all in the dir]"""
+    papers = json.loads((ROOT / data_dir / "papers.json").read_text(encoding="utf-8"))
+    tagged = json.loads((ROOT / data_dir / "tagged.json").read_text(encoding="utf-8"))
+    if codes:
+        papers = [p for p in papers if p["code"] in codes]
+    papers.sort(key=lambda p: p.get("date") or "", reverse=True)
+    out = {"schema": 1, "subject": subject, "title": papers[0].get("title") if papers else None, "papers": []}
     for p in papers:
-        qs = [{k: (reflow(q[k]) if k == "text" else q.get(k)) for k in KEEP} for q in tagged if q["paper_id"] == p["id"]]
+        qs = [clean(q) for q in tagged if q["paper_id"] == p["id"]]
         out["papers"].append({
             "pdf_path": unquote(urlparse(p["url"]).path),
-            "code": p["code"], "date": p.get("date"), "exam_type": p.get("exam_type"),
+            "code": p["code"], "title": p.get("title"), "date": p.get("date"), "exam_type": p.get("exam_type"),
             "questions": qs,
         })
     name = subject.lower().replace(" ", "-") + ".json"

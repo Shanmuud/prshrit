@@ -1,0 +1,29 @@
+[
+  {
+    "id": "7af1e4ba415c9f88",
+    "code": "CSS 1001",
+    "title": "Programming for Problem Solving",
+    "date": "2025-12-23",
+    "exam_type": "Makeup",
+    "url": "https://paper.shrit.in/authoritative/MIT%202021-26/MIT%202025-26%20QPs%203rd%20March%202026/December%202025%20and%20January%202026%20(Makeup)/MIT%20Sem%201%20to%20Sem%207%20QPs/Semester%201/CSS_1001-PROGRAMMING%20FOR%20PROBLEM%20SOLVING.pdf",
+    "file": "data/pdfs/7af1e4ba415c9f88_CSS_1001-PROGRAMMING_FOR_PROBLEM_SOLVING.pdf"
+  },
+  {
+    "id": "a5a1161b14a27175",
+    "code": "CSE 1071",
+    "title": "Problem Solving Using Computers",
+    "date": "2025-11-26",
+    "exam_type": "End-sem",
+    "url": "https://paper.shrit.in/authoritative/MIT%202021-26/MIT%202025-26%20QPs%203rd%20March%202026/November%20and%20December%202025%20(Regular)/MIT%20Sem%201%20to%20Sem%207%20QPs/Semester%201/CSE_1071-PROBLEM%20SOLVING%20USING%20COMPUTERS.pdf",
+    "file": "data/pdfs/a5a1161b14a27175_CSE_1071-PROBLEM_SOLVING_USING_COMPUTERS.pdf"
+  },
+  {
+    "id": "6f2a7cee22bf9a58",
+    "code": "CSS 1001",
+    "title": "Programming for Problem Solving",
+    "date": "2025-11-26",
+    "exam_type": "End-sem",
+    "url": "https://paper.shrit.in/YEAR1/CSE/PPS%20Endsem/CSS-1001-26-Nov-2025%28QP%29.pdf",
+    "file": "data/pdfs/6f2a7cee22bf9a58_CSS-1001-26-Nov-2025_QP.pdf"
+  }
+]

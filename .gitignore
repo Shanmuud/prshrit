@@ -5,3 +5,4 @@ __pycache__/
 *.pyc
 outbox/
 extract_cursor_v1.py
+work/

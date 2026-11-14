@@ -1,0 +1,225 @@
+{
+  "schema": 1,
+  "subject": "CSE 1071",
+  "title": "Problem Solving Using Computers",
+  "papers": [
+    {
+      "pdf_path": "/authoritative/MIT 2021-26/MIT 2025-26 QPs 3rd March 2026/November and December 2025 (Regular)/MIT Sem 1 to Sem 7 QPs/Semester 1/CSE_1071-PROBLEM SOLVING USING COMPUTERS.pdf",
+      "code": "CSE 1071",
+      "title": "Problem Solving Using Computers",
+      "date": "2025-11-26",
+      "exam_type": "End-sem",
+      "questions": [
+        {
+          "qno": "1A",
+          "text": "With a neat diagram of the computer organization, explain how each component coordinates together to make the computer system work.",
+          "marks": 3,
+          "co": "CO1",
+          "cognitive_level": "Understand",
+          "topic": "Computer fundamentals",
+          "subtopic": "Computer organization",
+          "difficulty": "Easy",
+          "leetcode": [],
+          "reason": "Draw the block diagram of a computer and explain how the CPU, memory and I/O units work together. This is descriptive recall."
+        },
+        {
+          "qno": "1B",
+          "text": "Analyze how expression evaluation changes if parentheses are added to the following line:\nresult = 10 + 2 * 5 / 2 - 3;\nDiscuss the above result before and after applying parentheses.\nExplain the shortcut assignment operator in C expressions, with an appropriate example.",
+          "marks": 3,
+          "co": "CO2",
+          "cognitive_level": "Analysis",
+          "topic": "Operators & expressions",
+          "subtopic": "Precedence and associativity",
+          "difficulty": "Easy",
+          "leetcode": [],
+          "reason": "Evaluate one arithmetic expression with and without parentheses using precedence rules, then explain shortcut assignment operators. Both parts are direct applications of the rules."
+        },
+        {
+          "qno": "1C",
+          "text": "Write a C program using a switch statement to check whether an entered alphabet is a vowel or a consonant.\nAnalyze how using a switch simplifies the logic compared to multiple if-else conditions.",
+          "marks": 4,
+          "co": "CO2",
+          "cognitive_level": "Analysis",
+          "topic": "Decision making",
+          "subtopic": "switch",
+          "difficulty": "Easy",
+          "leetcode": [],
+          "reason": "A vowel/consonant check using switch with fall-through cases, plus a short comparison with if-else. It is a single decision construct."
+        },
+        {
+          "qno": "2A",
+          "text": "Experiment with break and continue statements in terms of loop control and execution flow with an example.",
+          "marks": 2,
+          "co": "CO2",
+          "cognitive_level": "Application",
+          "topic": "Loops",
+          "subtopic": "break / continue",
+          "difficulty": "Easy",
+          "leetcode": [],
+          "reason": "Explain how break and continue change loop flow, with an example. This is a short conceptual answer."
+        },
+        {
+          "qno": "2B",
+          "text": "A library stores sorted book IDs. The librarian wants to search for a particular book ID quickly.\nBuild a C program to search for a book ID using the appropriate searching technique. Also, justify why the corresponding searching technique is chosen to be appropriate over others.",
+          "marks": 4,
+          "co": "CO3",
+          "cognitive_level": "Application",
+          "topic": "Arrays",
+          "subtopic": "Searching",
+          "difficulty": "Easy",
+          "leetcode": [
+            {
+              "id": 704,
+              "title": "Binary Search",
+              "slug": "binary-search"
+            },
+            {
+              "id": 35,
+              "title": "Search Insert Position",
+              "slug": "search-insert-position"
+            }
+          ],
+          "reason": "Recognise that sorted IDs call for binary search, write it iteratively and justify the choice over linear search. This is the standard algorithm."
+        },
+        {
+          "qno": "2C",
+          "text": "A teacher maintains the marks of students in two different tests as two matrices of size 3×3.\nShe wants to calculate the total marks for each student by adding the corresponding elements of the two matrices.\ni) Develop a C program to add two 3×3 matrices and display the resulting matrix.\nii) Explain clearly how each element of the matrices is accessed and summed using nested loops.",
+          "marks": 4,
+          "co": "CO3",
+          "cognitive_level": "Application",
+          "topic": "Matrices (2D arrays)",
+          "subtopic": "Matrix arithmetic",
+          "difficulty": "Easy",
+          "leetcode": [],
+          "reason": "Add two 3x3 matrices element by element with nested loops and explain how each element is accessed. It is a direct nested-loop exercise."
+        },
+        {
+          "qno": "3A",
+          "text": "Develop a function named \"difference\" that takes two integers as input parameters and returns their absolute difference as an integer using C programming. Declare the function prototype and mention the formal parameters",
+          "marks": 2,
+          "co": "CO4",
+          "cognitive_level": "Application",
+          "topic": "Functions",
+          "subtopic": "Defining and calling",
+          "difficulty": "Easy",
+          "leetcode": [],
+          "reason": "Write a prototype and a function that returns the absolute difference of two integers, and name the formal parameters. The function body is a single conditional."
+        },
+        {
+          "qno": "3B",
+          "text": "A positive integer is entered through the keyboard. Write a C function to obtain the prime factors of this number. For example, the prime factors of 24 are 2, 2, 2, and 3, and those of 35 are 5 and 7.",
+          "marks": 4,
+          "co": "CO4",
+          "cognitive_level": "Application",
+          "topic": "Loops",
+          "subtopic": "Number problems",
+          "difficulty": "Easy",
+          "leetcode": [
+            {
+              "id": 263,
+              "title": "Ugly Number",
+              "slug": "ugly-number"
+            }
+          ],
+          "reason": "Find prime factors by dividing repeatedly by each candidate divisor in a nested loop. The answer is wrapped in a function (Functions), but the factorisation loop is what decides difficulty."
+        },
+        {
+          "qno": "3C",
+          "text": "Implement binary search recursively on a sorted array. Your recursive function should return the index of the key if found, otherwise -1.",
+          "marks": 4,
+          "co": "CO4",
+          "cognitive_level": "Application",
+          "topic": "Recursion",
+          "subtopic": "Recursive search",
+          "difficulty": "Easy",
+          "leetcode": [
+            {
+              "id": 704,
+              "title": "Binary Search",
+              "slug": "binary-search"
+            }
+          ],
+          "reason": "Recursive binary search that returns the index or -1. It is a textbook recursion with low/high bounds and a clear base case."
+        },
+        {
+          "qno": "4A",
+          "text": "A student writes a function void increment (int a, int b) to increase both variables by 10 and but finds the original values unchanged when he prints them in main. Analyze the error and write the c program by rewriting the function and print the updated value in main (Hint: use pointers).",
+          "marks": 3,
+          "co": "CO4",
+          "cognitive_level": "Analysis",
+          "topic": "Pointers",
+          "subtopic": "Pointer basics",
+          "difficulty": "Easy",
+          "leetcode": [],
+          "reason": "Explain why call by value leaves the caller's variables unchanged, then rewrite increment() to take pointers. This is the standard call-by-reference fix."
+        },
+        {
+          "qno": "4B",
+          "text": "Design a C program to analyze student performance using nested function calls.\nYour program should:\ni) Accept marks of N students in M subjects and store them in a 2D array.\nii) Compute each student's average using the function studentAverage().\niii) Call the function subjectAverage() inside studentAverage() to compute the average marks for each subject (demonstrating function nesting).\niv) Display both student-wise and subject-wise averages clearly.",
+          "marks": 4,
+          "co": "CO4",
+          "cognitive_level": "Application",
+          "topic": "Functions",
+          "subtopic": "Defining and calling",
+          "difficulty": "Easy",
+          "leetcode": [
+            {
+              "id": 1672,
+              "title": "Richest Customer Wealth",
+              "slug": "richest-customer-wealth"
+            }
+          ],
+          "reason": "Store N x M marks in a 2D array and compute row (student) and column (subject) averages, with one function nested inside another. There are several parts, but the hardest idea is row and column traversal."
+        },
+        {
+          "qno": "4C",
+          "text": "Develop a C program that uses a structure to store the dimensions of a rectangle (length and width) and calculate and display its area and perimeter.",
+          "marks": 3,
+          "co": "CO5",
+          "cognitive_level": "Application",
+          "topic": "Structures",
+          "subtopic": "Structure definition",
+          "difficulty": "Easy",
+          "leetcode": [],
+          "reason": "Define a rectangle structure, read its length and width, and print the area and perimeter. It is basic structure member access."
+        },
+        {
+          "qno": "5A",
+          "text": "Write a C program to define a structure to store census data (city name, population, literacy level), read data for 5 cities and display the city with the highest literacy level.",
+          "marks": 3,
+          "co": "CO5",
+          "cognitive_level": "Application",
+          "topic": "Structures",
+          "subtopic": "Array of structures",
+          "difficulty": "Easy",
+          "leetcode": [],
+          "reason": "Read census records for 5 cities into an array of structures and find the city with the highest literacy level. This is one linear max scan over records."
+        },
+        {
+          "qno": "5B",
+          "text": "Develop a C program to copy one string to another using pointers only. (without using library functions for strings)",
+          "marks": 4,
+          "co": "CO5",
+          "cognitive_level": "Application",
+          "topic": "Pointers",
+          "subtopic": "Pointers and strings",
+          "difficulty": "Easy",
+          "leetcode": [],
+          "reason": "Copy a string with pointer increments until the null terminator, without library functions. It is a short pointer loop."
+        },
+        {
+          "qno": "5C",
+          "text": "Classify 4 cybercrimes where computers are used as a tool to commit crimes and explain 2 examples of such crimes.",
+          "marks": 3,
+          "co": "CO6",
+          "cognitive_level": "Understand",
+          "topic": "Computer fundamentals",
+          "subtopic": "Cyber security and ethics",
+          "difficulty": "Easy",
+          "leetcode": [],
+          "reason": "List four cybercrimes that use a computer as a tool and explain two of them. This is descriptive recall."
+        }
+      ]
+    }
+  ]
+}

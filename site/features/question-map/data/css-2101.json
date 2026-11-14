@@ -1,10 +1,12 @@
 {
   "schema": 1,
   "subject": "CSS 2101",
+  "title": "Data Structures",
   "papers": [
     {
       "pdf_path": "/authoritative/MIT 2021-26/MIT 2025-26 QPs 3rd March 2026/December 2025 and January 2026 (Makeup)/MIT Sem 1 to Sem 7 QPs/Semester 3/CSS_2101-Data Structures.pdf",
       "code": "CSS 2101",
+      "title": "Data Structures",
       "date": "2026-01-03",
       "exam_type": "Makeup",
       "questions": [
@@ -235,6 +237,7 @@
     {
       "pdf_path": "/authoritative/MIT 2021-26/MIT 2025-26 QPs 3rd March 2026/November and December 2025 (Regular)/MIT Sem 1 to Sem 7 QPs/Semester 3/CSS-2101-Data Structures.pdf",
       "code": "CSS 2101",
+      "title": "Data Structures",
       "date": "2025-11-20",
       "exam_type": "End-sem",
       "questions": [
@@ -435,6 +438,7 @@
     {
       "pdf_path": "/authoritative/MIT 2021-26/2024-2025/QP/Sem1 Sem3 and Sem5 January 2025 and February 2025 (Makeup)/3 Sem January 2025 (Makeup)/CSE 2122-CSE_2122 - DATA STRUCTURES.pdf",
       "code": "CSE 2122",
+      "title": "Data Structures",
       "date": "2024-12-26",
       "exam_type": "Makeup",
       "questions": [

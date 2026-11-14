@@ -1,0 +1,422 @@
+[
+  {
+    "id": "7af1e4ba415c9f88-1A",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "1A",
+    "text": "Explain the role of an operating system in managing computer hardware.",
+    "marks": 2,
+    "co": "CO1",
+    "cognitive_level": "Understand"
+  },
+  {
+    "id": "7af1e4ba415c9f88-1B",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "1B",
+    "text": "Demonstrate through a flowchart and algorithm how two variables can be swapped without\nemploying a third variable.",
+    "marks": 3,
+    "co": "CO1",
+    "cognitive_level": "Understand"
+  },
+  {
+    "id": "7af1e4ba415c9f88-1C",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "1C",
+    "text": "Design a C program that implements a digital clock using increment operators and loops.\nSample output:\n00:00:00\n00:00:01\n00:00:02\n...\n00:00:59\n00:01:00",
+    "marks": 5,
+    "co": "CO2",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "7af1e4ba415c9f88-2A",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "2A",
+    "text": "Write a C program to print all odd numbers between 50 and 100 using a while loop.",
+    "marks": 2,
+    "co": "CO2",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "7af1e4ba415c9f88-2B",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "2B",
+    "text": "i) Develop a C program to evaluate the expression\nresult = (x++ * y-- + ++x / --y) % (x | y);\nii) considering initial values of x = 5, y = 3,\nEvaluate the above expression step by step, considering precedence, associativity, and evaluation\norder.\n(2+1 = 3 marks)",
+    "marks": 3,
+    "co": "CO2",
+    "cognitive_level": "Analysis"
+  },
+  {
+    "id": "7af1e4ba415c9f88-2C",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "2C",
+    "text": "i) Analyze the working of the Bubble Sort algorithm with an example of sorting the array\n[7, 3, 5, 2, 8] in ascending order. Show the array contents after each pass and mention the number\nof comparisons and swaps made.\nii) Write a C program for the above situation.\n(2+3 = 5 marks)",
+    "marks": 5,
+    "co": "CO3",
+    "cognitive_level": "Analysis"
+  },
+  {
+    "id": "7af1e4ba415c9f88-3A",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "3A",
+    "text": "Explain the following string handling functions of C with proper syntax: strcpy(), strcat().",
+    "marks": 2,
+    "co": "CO3",
+    "cognitive_level": "Understand"
+  },
+  {
+    "id": "7af1e4ba415c9f88-3B",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "3B",
+    "text": "Write a C program to remove all other characters in a string except the alphabet. Accept the string\nfrom the user.",
+    "marks": 3,
+    "co": "CO3",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "7af1e4ba415c9f88-3C",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "3C",
+    "text": "Define recursive function. Write a C program to check whether the given number is Armstrong or\nnot with the aid of a recursive function.",
+    "marks": 5,
+    "co": "CO4",
+    "cognitive_level": "Analysis"
+  },
+  {
+    "id": "7af1e4ba415c9f88-4A",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "4A",
+    "text": "Write a C program that demonstrates two approaches to perform a mathematical operation,\n\"incrementing a number by 5\", using separate functions: one function that operates on a copy of the\nvariable and another function that modifies the original variable directly.",
+    "marks": 3,
+    "co": "CO4",
+    "cognitive_level": "Analysis"
+  },
+  {
+    "id": "7af1e4ba415c9f88-4B",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "4B",
+    "text": "Write a function to compute the sum of the first n cubes: S(n) = 1^3 + 2^3 + . . . + n^3 Print the sum\nin main() function.",
+    "marks": 3,
+    "co": "CO4",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "7af1e4ba415c9f88-4C",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "4C",
+    "text": "Write a C program to read M x N matrix in the main() function. Do the following tasks in function\ncalled process().\ni) Find the sum of rows and sum of columns.\nii) Replace all odd numbers in the matrix by binary equivalent of that number and even number by\nleast number in the matrix.",
+    "marks": 4,
+    "co": "CO4",
+    "cognitive_level": "Analysis"
+  },
+  {
+    "id": "7af1e4ba415c9f88-5A",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "5A",
+    "text": "Demonstrate different file opening modes and discuss putw() and feof() file functions with\nappropriate syntax.",
+    "marks": 3,
+    "co": "CO5",
+    "cognitive_level": "Understand"
+  },
+  {
+    "id": "7af1e4ba415c9f88-5B",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "5B",
+    "text": "Write a C program to find sum of all even numbers of a 1D array using a pointer to an array.",
+    "marks": 3,
+    "co": "CO5",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "7af1e4ba415c9f88-5C",
+    "paper_id": "7af1e4ba415c9f88",
+    "qno": "5C",
+    "text": "Develop a C program to manage bank accounts using a structure. Your program should:\ni) Allow the user to input the details (name, account number, account type, and balance) for multiple\ncustomers.\nii) Provide options to read customer details, display account information, and deposit an amount into\na specific account.\niii) Implement error handling for invalid account numbers or deposit amounts.\niv) Ensure that the program continues to run until the user chooses to exit.",
+    "marks": 4,
+    "co": "CO5",
+    "cognitive_level": "Analysis"
+  },
+  {
+    "id": "a5a1161b14a27175-1A",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "1A",
+    "text": "With a neat diagram of the computer organization, explain how each component coordinates\ntogether to make the computer system work.",
+    "marks": 3,
+    "co": "CO1",
+    "cognitive_level": "Understand"
+  },
+  {
+    "id": "a5a1161b14a27175-1B",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "1B",
+    "text": "Analyze how expression evaluation changes if parentheses are added to the following line:\nresult = 10 + 2 * 5 / 2 - 3;\nDiscuss the above result before and after applying parentheses.\nExplain the shortcut assignment operator in C expressions, with an appropriate example.",
+    "marks": 3,
+    "co": "CO2",
+    "cognitive_level": "Analysis"
+  },
+  {
+    "id": "a5a1161b14a27175-1C",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "1C",
+    "text": "Write a C program using a switch statement to check whether an entered alphabet is a vowel or a\nconsonant.\nAnalyze how using a switch simplifies the logic compared to multiple if-else conditions.",
+    "marks": 4,
+    "co": "CO2",
+    "cognitive_level": "Analysis"
+  },
+  {
+    "id": "a5a1161b14a27175-2A",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "2A",
+    "text": "Experiment with break and continue statements in terms of loop control and execution flow with an\nexample.",
+    "marks": 2,
+    "co": "CO2",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "a5a1161b14a27175-2B",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "2B",
+    "text": "A library stores sorted book IDs. The librarian wants to search for a particular book ID quickly.\nBuild a C program to search for a book ID using the appropriate searching technique. Also, justify\nwhy the corresponding searching technique is chosen to be appropriate over others.",
+    "marks": 4,
+    "co": "CO3",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "a5a1161b14a27175-2C",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "2C",
+    "text": "A teacher maintains the marks of students in two different tests as two matrices of size 3×3.\nShe wants to calculate the total marks for each student by adding the corresponding elements of\nthe two matrices.\ni) Develop a C program to add two 3×3 matrices and display the resulting matrix.\nii) Explain clearly how each element of the matrices is accessed and summed using nested loops.",
+    "marks": 4,
+    "co": "CO3",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "a5a1161b14a27175-3A",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "3A",
+    "text": "Develop a function named \"difference\" that takes two integers as input parameters and returns their\nabsolute difference as an integer using C programming. Declare the function prototype and mention\nthe formal parameters",
+    "marks": 2,
+    "co": "CO4",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "a5a1161b14a27175-3B",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "3B",
+    "text": "A positive integer is entered through the keyboard. Write a C function to obtain the prime factors of\nthis number. For example, the prime factors of 24 are 2, 2, 2, and 3, and those of 35 are 5 and 7.",
+    "marks": 4,
+    "co": "CO4",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "a5a1161b14a27175-3C",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "3C",
+    "text": "Implement binary search recursively on a sorted array. Your recursive function should return the\nindex of the key if found, otherwise -1.",
+    "marks": 4,
+    "co": "CO4",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "a5a1161b14a27175-4A",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "4A",
+    "text": "A student writes a function void increment (int a, int b) to increase both variables by 10 and but\nfinds the original values unchanged when he prints them in main. Analyze the error and write the c\nprogram by rewriting the function and print the updated value in main (Hint: use pointers).",
+    "marks": 3,
+    "co": "CO4",
+    "cognitive_level": "Analysis"
+  },
+  {
+    "id": "a5a1161b14a27175-4B",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "4B",
+    "text": "Design a C program to analyze student performance using nested function calls.\nYour program should:\ni) Accept marks of N students in M subjects and store them in a 2D array.\nii) Compute each student's average using the function studentAverage().\niii) Call the function subjectAverage() inside studentAverage() to compute the average marks for\neach subject (demonstrating function nesting).\niv) Display both student-wise and subject-wise averages clearly.",
+    "marks": 4,
+    "co": "CO4",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "a5a1161b14a27175-4C",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "4C",
+    "text": "Develop a C program that uses a structure to store the dimensions of a rectangle (length and width)\nand calculate and display its area and perimeter.",
+    "marks": 3,
+    "co": "CO5",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "a5a1161b14a27175-5A",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "5A",
+    "text": "Write a C program to define a structure to store census data (city name, population, literacy level),\nread data for 5 cities and display the city with the highest literacy level.",
+    "marks": 3,
+    "co": "CO5",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "a5a1161b14a27175-5B",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "5B",
+    "text": "Develop a C program to copy one string to another using pointers only. (without using library\nfunctions for strings)",
+    "marks": 4,
+    "co": "CO5",
+    "cognitive_level": "Application"
+  },
+  {
+    "id": "a5a1161b14a27175-5C",
+    "paper_id": "a5a1161b14a27175",
+    "qno": "5C",
+    "text": "Classify 4 cybercrimes where computers are used as a tool to commit crimes and explain 2\nexamples of such crimes.",
+    "marks": 3,
+    "co": "CO6",
+    "cognitive_level": "Understand"
+  },
+  {
+    "id": "6f2a7cee22bf9a58-1A",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "1A",
+    "text": "Design an algorithm and create a flowchart to check if a given number is a palindrome.",
+    "marks": 2,
+    "co": "CO1",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-1B",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "1B",
+    "text": "Identify and explain the different types of computer languages, highlighting their unique characteristics and examples for each.",
+    "marks": 3,
+    "co": "CO1",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-1C",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "1C",
+    "text": "i) Write a C program that generates a grade based on the score in a subject using a switch statement. The program should take an integer input (0 to 100) representing the student's score and should generate and display grades based on following criteria.\n• 90 and above: Grade A\n• 80 to 89: Grade B\n• 70 to 79: Grade C\n• 60 to 69: Grade D\n• Below 60: Grade F\nii) Referring to the criteria in part (i) question above, write a C program to generate and display grades, using conditional (ternary) operators only [do not use if's and switch].\niii) Evaluate the following expression and provide the resultant: Consider: i = 9, j = 5.\n(i * 3 + j % i + j - 1 + i - 4 / j + 1)",
+    "marks": 5,
+    "co": "CO2",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-2A",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "2A",
+    "text": "Write a C program utilizing appropriate decision-making statements to compute the commission based on the input sales amount, considering the following conditions:\na. For sales amounts less than or equal to Rs. 5000 no commission is given to females, males receive a commission of 2%.\nb. For sales amounts greater than Rs. 5000 and up to Rs. 10,000 females receive a commission of 2%, males receive a commission of 4%.\nc. For sales amounts exceeding Rs. 10,000, both males and females receive a commission of 6%.",
+    "marks": 2,
+    "co": "CO2",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-2B",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "2B",
+    "text": "Write a complete C program to read a number and check for the following operations using a while Loop.\n• Display \"EVEN\" if all the digits in the number are even.\n• Display \"ODD\" if all the digits in the number are odd.\n• Display \"neither EVEN nor ODD\" if all the digits in the number are neither even nor odd.",
+    "marks": 3,
+    "co": "CO2",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-2C",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "2C",
+    "text": "Explain the significance of a 1D array in programming and its practical applications. Discuss various methods for initializing an array. Additionally, write a C program that reads N elements into a single array and then separates the elements into two arrays: one containing prime numbers and the other containing non-prime numbers.",
+    "marks": 5,
+    "co": "CO3",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-3A",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "3A",
+    "text": "Write a C program to count the number of alphabets, digits, and special characters in a given string.",
+    "marks": 2,
+    "co": "CO3",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-3B",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "3B",
+    "text": "Write a C program to read the elements of a 3 × 3 matrix and sort the elements of each row in ascending order. Display the matrix after sorting each row.",
+    "marks": 3,
+    "co": "CO3",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-3C",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "3C",
+    "text": "Design and implement a menu-driven C program using functions (without using structures) to manage student records. The program should allow the user to:\n1. Add new student details (Name, Roll Number, Marks)\n2. Display all student details\n3. Search for a student by roll number\n4. Calculate and display the class average marks",
+    "marks": 5,
+    "co": "CO4",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-4A",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "4A",
+    "text": "Write a C program using functions to calculate Simple Interest (SI), Compound Interest (CI), and their Difference. The program should take the principal, rate, and time as inputs and use separate functions for each calculation - one for SI, one for CI, and one for finding the difference. Demonstrate how using multiple functions improves the program's modularity, readability, and reusability.\nHint: SI = (P × R × T) / 100,\nCI = P ((1 + R / 100)^T) – P",
+    "marks": 3,
+    "co": "CO4",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-4B",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "4B",
+    "text": "Design a program using functions with pointer parameters to compute both row-wise and column-wise sums of a matrix.",
+    "marks": 3,
+    "co": "CO4",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-4C",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "4C",
+    "text": "Write a C program using separate functions to perform operations on an array. Implement readArray() to input n integers, reverseArray() to reverse the array elements, findMaximum() to find the maximum value in the reversed array, and displayResult() to print both the reversed array and the maximum element. Each function should handle its task independently, and data should be passed appropriately between functions.",
+    "marks": 4,
+    "co": "CO4",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-5A",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "5A",
+    "text": "A shop maintains information about its products, including product_name, quantity, and price. You are required to use an array of structures and pointer arithmetic in C to perform the following task and display the details (product_name, quantity, and price) of products whose quantity is less than 5.:\ni) Calculate the total stock value of all products (where stock value of each product = quantity × price).",
+    "marks": 3,
+    "co": "CO5",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-5B",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "5B",
+    "text": "Analyze the difference in accessing structure members using a normal structure variable and a pointer to structure. Write a C program showing both methods.",
+    "marks": 3,
+    "co": "CO5",
+    "cognitive_level": null,
+    "from_key": true
+  },
+  {
+    "id": "6f2a7cee22bf9a58-5C",
+    "paper_id": "6f2a7cee22bf9a58",
+    "qno": "5C",
+    "text": "Develop a C program to merge two text files (file1.txt and file2.txt) into a third file (merged.txt). After merging, the program should display the total number of characters and lines in the merged file. Explain how file pointers and end-of-file (EOF) checks contribute to efficient file concatenation.",
+    "marks": 4,
+    "co": "CO5",
+    "cognitive_level": null,
+    "from_key": true
+  }
+]
