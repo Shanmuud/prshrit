@@ -24,7 +24,6 @@ export interface TaggedQuestion {
 export interface TaggedPaper {
   pdf_path: string; // same path the site serves: "/authoritative/.../CSS-2101-Data Structures.pdf"
   code: string;
-  title?: string | null; // "Data Structures"
   date: string | null; // yyyy-mm-dd
   exam_type: string | null;
   questions: TaggedQuestion[];
@@ -32,7 +31,6 @@ export interface TaggedPaper {
 
 export interface SubjectTags {
   schema: 1;
-  subject: string; // "CSS 2101", or "Programming" for a page that mixes codes
-  title?: string | null; // "Data Structures"
+  subject: string; // "CSS 2101"
   papers: TaggedPaper[];
 }

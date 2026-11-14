@@ -9,6 +9,57 @@
       "title": "Problem Solving Using Computers",
       "date": "2025-11-26",
       "exam_type": "End-sem",
+      "summary": {
+        "questions": 15,
+        "marks": 50,
+        "topics": {
+          "Pointers": {
+            "questions": 2,
+            "marks": 7
+          },
+          "Computer fundamentals": {
+            "questions": 2,
+            "marks": 6
+          },
+          "Loops": {
+            "questions": 2,
+            "marks": 6
+          },
+          "Functions": {
+            "questions": 2,
+            "marks": 6
+          },
+          "Structures": {
+            "questions": 2,
+            "marks": 6
+          },
+          "Decision making": {
+            "questions": 1,
+            "marks": 4
+          },
+          "Arrays": {
+            "questions": 1,
+            "marks": 4
+          },
+          "Matrices (2D arrays)": {
+            "questions": 1,
+            "marks": 4
+          },
+          "Recursion": {
+            "questions": 1,
+            "marks": 4
+          },
+          "Operators & expressions": {
+            "questions": 1,
+            "marks": 3
+          }
+        },
+        "difficulty": {
+          "Easy": 15,
+          "Medium": 0,
+          "Hard": 0
+        }
+      },
       "questions": [
         {
           "qno": "1A",

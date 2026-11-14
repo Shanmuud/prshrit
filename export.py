@@ -36,12 +36,29 @@ def clean(q: dict) -> dict:
     return row
 
 
+def summarize(qs: list[dict]) -> dict:
+    """Per-paper analysis: questions and marks per topic (most asked first), and the difficulty split."""
+    topics: dict[str, dict] = {}
+    for q in qs:
+        t = topics.setdefault(q["topic"], {"questions": 0, "marks": 0})
+        t["questions"] += 1
+        t["marks"] += q.get("marks") or 0
+    diff = {d: sum(q["difficulty"] == d for q in qs) for d in ("Easy", "Medium", "Hard")}
+    return {
+        "questions": len(qs),
+        "marks": sum(q.get("marks") or 0 for q in qs),
+        "topics": dict(sorted(topics.items(), key=lambda kv: (-kv[1]["questions"], -kv[1]["marks"]))),
+        "difficulty": diff,
+    }
+
+
 def main(subject: str = "CSS 2101", data_dir: str = "data", *codes: str) -> int:
     """export.py <SUBJECT> [data dir] [course codes to keep, default: all in the dir]"""
     papers = json.loads((ROOT / data_dir / "papers.json").read_text(encoding="utf-8"))
     tagged = json.loads((ROOT / data_dir / "tagged.json").read_text(encoding="utf-8"))
     if codes:
         papers = [p for p in papers if p["code"] in codes]
+    papers = [p for p in papers if p.get("exam_type") == "End-sem"]  # end-sem papers only
     papers.sort(key=lambda p: p.get("date") or "", reverse=True)
     out = {"schema": 1, "subject": subject, "title": papers[0].get("title") if papers else None, "papers": []}
     for p in papers:
@@ -49,6 +66,7 @@ def main(subject: str = "CSS 2101", data_dir: str = "data", *codes: str) -> int:
         out["papers"].append({
             "pdf_path": unquote(urlparse(p["url"]).path),
             "code": p["code"], "title": p.get("title"), "date": p.get("date"), "exam_type": p.get("exam_type"),
+            "summary": summarize(qs),
             "questions": qs,
         })
     name = subject.lower().replace(" ", "-") + ".json"

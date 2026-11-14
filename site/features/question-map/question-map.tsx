@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import type { Difficulty, SubjectTags, TaggedPaper, TaggedQuestion } from "./types";
+import type { Difficulty, SubjectTags, TaggedQuestion } from "./types";
 
 const DIFFS: Difficulty[] = ["Easy", "Medium", "Hard"];
 
@@ -26,68 +26,35 @@ const DIFF_STYLE: Record<Difficulty, { bar: string; pill: string; chipOn: string
 
 type Row = TaggedQuestion & { paperId: string; paperLabel: string; pdf: string };
 
-function paperLabel(p: { code: string; exam_type: string | null; date: string | null }, withCode = false) {
+function paperLabel(p: { exam_type: string | null; date: string | null }) {
   const d = p.date ? new Date(p.date + "T00:00:00").toLocaleDateString("en-IN", { month: "short", year: "numeric" }) : "";
-  return [withCode ? p.code : null, p.exam_type, d].filter(Boolean).join(" · ");
+  return [p.exam_type, d].filter(Boolean).join(" · ");
 }
-
-type Count = Record<Difficulty, number> & { n: number; marks: number };
-const emptyCount = (): Count => ({ Easy: 0, Medium: 0, Hard: 0, n: 0, marks: 0 });
 
 export function QuestionMap({ data, className = "" }: { data: SubjectTags; className?: string }) {
   const [topic, setTopic] = useState<string | null>(null);
   const [diff, setDiff] = useState<Difficulty | null>(null);
   const [paper, setPaper] = useState<string | null>(null);
 
-  const mixedCodes = new Set(data.papers.map((p) => p.code)).size > 1;
-  const label = (p: TaggedPaper) => paperLabel(p, mixedCodes);
-
   const rows: Row[] = useMemo(
     () =>
       data.papers.flatMap((p) =>
-        p.questions.map((q) => ({ ...q, paperId: p.pdf_path, paperLabel: paperLabel(p, mixedCodes), pdf: p.pdf_path })),
+        p.questions.map((q) => ({ ...q, paperId: p.pdf_path, paperLabel: paperLabel(p), pdf: p.pdf_path })),
       ),
-    [data, mixedCodes],
+    [data],
   );
 
-  // Every topic in the subject, most asked first; the order stays put while a paper is picked.
-  const order = useMemo(() => {
-    const m = new Map<string, number>();
-    for (const r of rows) m.set(r.topic, (m.get(r.topic) ?? 0) + 1);
-    return [...m.entries()].sort((a, b) => b[1] - a[1]).map(([t]) => t);
-  }, [rows]);
-
-  // Per-paper counts: grid[topic][paperId], each with its difficulty split and marks.
-  const grid = useMemo(() => {
-    const g = new Map<string, Map<string, Count>>();
+  const topics = useMemo(() => {
+    const m = new Map<string, Record<Difficulty, number> & { n: number }>();
     for (const r of rows) {
-      const byPaper = g.get(r.topic) ?? new Map<string, Count>();
-      const c = byPaper.get(r.paperId) ?? emptyCount();
+      const c = m.get(r.topic) ?? { Easy: 0, Medium: 0, Hard: 0, n: 0 };
       c[r.difficulty]++;
       c.n++;
-      c.marks += r.marks ?? 0;
-      byPaper.set(r.paperId, c);
-      g.set(r.topic, byPaper);
+      m.set(r.topic, c);
     }
-    return g;
+    return [...m.entries()].sort((a, b) => b[1].n - a[1].n);
   }, [rows]);
-
-  // The bars follow the paper filter: all papers, or just the picked one.
-  const topics = order
-    .map((t) => {
-      const total = emptyCount();
-      for (const [pid, c] of grid.get(t) ?? []) {
-        if (paper && pid !== paper) continue;
-        for (const d of DIFFS) total[d] += c[d];
-        total.n += c.n;
-        total.marks += c.marks;
-      }
-      return [t, total] as const;
-    })
-    .filter(([, c]) => c.n > 0);
-  const max = Math.max(1, ...topics.map(([, c]) => c.n));
-  const cellMax = Math.max(1, ...[...grid.values()].flatMap((m) => [...m.values()].map((c) => c.n)));
-  const picked = data.papers.find((p) => p.pdf_path === paper);
+  const max = topics[0]?.[1].n ?? 1;
 
   const shown = rows.filter(
     (r) => (!topic || r.topic === topic) && (!diff || r.difficulty === diff) && (!paper || r.paperId === paper),
@@ -101,9 +68,7 @@ export function QuestionMap({ data, className = "" }: { data: SubjectTags; class
     <section className={`flex flex-col gap-6 ${className}`} aria-label="Questions by topic">
       <div className="rounded-xl border border-border bg-card p-4 sm:p-5">
         <div className="mb-3 flex flex-wrap items-baseline justify-between gap-2">
-          <h2 className="text-base font-semibold">
-            {picked ? `Topics in ${label(picked)}` : "How often each topic is asked"}
-          </h2>
+          <h2 className="text-base font-semibold">How often each topic is asked</h2>
           <div className="flex gap-3 text-xs text-muted-foreground">
             {DIFFS.map((d) => (
               <span key={d} className="flex items-center gap-1.5">
@@ -130,103 +95,11 @@ export function QuestionMap({ data, className = "" }: { data: SubjectTags; class
                   c[d] ? <span key={d} className={DIFF_STYLE[d].bar} style={{ width: `${(c[d] / c.n) * 100}%` }} title={`${c[d]} ${d}`} /> : null,
                 )}
               </span>
-              <span className="text-right font-mono text-xs tabular-nums text-muted-foreground" title={`${c.marks} marks`}>
-                {c.n} q
-              </span>
+              <span className="text-right font-mono text-xs tabular-nums text-muted-foreground">{c.n} q</span>
             </button>
           ))}
         </div>
       </div>
-
-      {data.papers.length > 1 && (
-        <div className="rounded-xl border border-border bg-card p-4 sm:p-5">
-          <h2 className="mb-1 text-base font-semibold">Per paper</h2>
-          <p className="mb-3 text-xs text-muted-foreground">
-            Questions on each topic in each paper. Pick a paper or a cell to filter.
-          </p>
-          <div className="-mx-1 overflow-x-auto px-1">
-            <table className="w-full min-w-max border-separate border-spacing-1 text-sm">
-              <thead>
-                <tr>
-                  <th className="sticky left-0 bg-card text-left text-xs font-medium text-muted-foreground">Topic</th>
-                  {data.papers.map((p) => (
-                    <th key={p.pdf_path} className="font-normal">
-                      <button
-                        type="button"
-                        aria-pressed={paper === p.pdf_path}
-                        onClick={() => setPaper(paper === p.pdf_path ? null : p.pdf_path)}
-                        className={`w-full rounded-md px-2 py-1 text-xs leading-tight transition-colors ${
-                          paper === p.pdf_path ? "bg-primary text-primary-foreground" : "text-muted-foreground hover:bg-muted"
-                        }`}
-                      >
-                        {label(p).split(" · ").map((part, k) => (
-                          <span key={k} className="block whitespace-nowrap">
-                            {part}
-                          </span>
-                        ))}
-                      </button>
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {order.map((t) => (
-                  <tr key={t}>
-                    <th scope="row" className="sticky left-0 max-w-[10rem] truncate bg-card pr-2 text-left font-medium">
-                      {t}
-                    </th>
-                    {data.papers.map((p) => {
-                      const c = grid.get(t)?.get(p.pdf_path);
-                      const on = topic === t && paper === p.pdf_path;
-                      return (
-                        <td key={p.pdf_path} className="p-0">
-                          <button
-                            type="button"
-                            disabled={!c}
-                            aria-pressed={on}
-                            aria-label={`${t}, ${label(p)}: ${c?.n ?? 0} questions`}
-                            title={
-                              c
-                                ? `${c.n} q · ${c.marks} marks · ${DIFFS.filter((d) => c[d]).map((d) => `${c[d]} ${d}`).join(", ")}`
-                                : "none"
-                            }
-                            onClick={() => {
-                              setTopic(on ? null : t);
-                              setPaper(on ? null : p.pdf_path);
-                            }}
-                            className={`relative h-8 w-full min-w-12 rounded-md font-mono text-xs tabular-nums transition-shadow ${
-                              c ? "text-foreground hover:ring-1 hover:ring-primary" : "text-muted-foreground/40"
-                            } ${on ? "ring-2 ring-primary" : ""}`}
-                          >
-                            {c && (
-                              <span
-                                aria-hidden
-                                className="absolute inset-0 rounded-md bg-primary"
-                                style={{ opacity: 0.12 + (c.n / cellMax) * 0.5 }}
-                              />
-                            )}
-                            <span className="relative">{c ? c.n : "·"}</span>
-                          </button>
-                        </td>
-                      );
-                    })}
-                  </tr>
-                ))}
-                <tr>
-                  <th scope="row" className="sticky left-0 bg-card pr-2 text-left text-xs font-medium text-muted-foreground">
-                    Total
-                  </th>
-                  {data.papers.map((p) => (
-                    <td key={p.pdf_path} className="text-center font-mono text-xs tabular-nums text-muted-foreground">
-                      {p.questions.length}
-                    </td>
-                  ))}
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      )}
 
       <div className="flex flex-wrap items-center gap-2">
         {DIFFS.map((d) => (
@@ -239,7 +112,7 @@ export function QuestionMap({ data, className = "" }: { data: SubjectTags; class
         {data.papers.map((p) => (
           <button key={p.pdf_path} type="button" aria-pressed={paper === p.pdf_path} onClick={() => setPaper(paper === p.pdf_path ? null : p.pdf_path)}
             className={`${chip} ${paper === p.pdf_path ? "border-primary bg-primary text-primary-foreground" : chipOff}`}>
-            {label(p)}
+            {paperLabel(p)}
           </button>
         ))}
         <span className="ml-auto font-mono text-xs text-muted-foreground">
