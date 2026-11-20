@@ -26,7 +26,7 @@ export default async function SubjectPage({ params }: { params: Promise<{ slug: 
       <main className="mx-auto flex max-w-3xl flex-col gap-8 px-4 py-8 sm:px-6">
         <div>
           <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground">{subjectCode}</p>
-          <h1 className="text-2xl font-semibold">{tags ? "Data Structures" : subjectCode}</h1>
+          <h1 className="text-2xl font-semibold">{({ "CSS 2101": "Data Structures", "CSE 2122": "Data Structures", "CSS 2103": "Data Analytics" } as Record<string, string>)[subjectCode] ?? subjectCode}</h1>
           <p className="text-sm text-muted-foreground">{tags?.papers.length ?? 0} papers</p>
         </div>
 

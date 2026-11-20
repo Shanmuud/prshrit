@@ -1,0 +1,77 @@
+{
+  "2025-reg-1A": {
+    "method": "Apriori and association-rule generation",
+    "approach": "Count singletons, join frequent itemsets to form larger candidates, and prune any candidate with an infrequent subset before checking support. From the largest frequent itemsets, calculate rule support as joint count divided by transaction count and confidence as joint count divided by antecedent count. Reapply the changed support threshold to the retained counts.",
+    "subtopic": "Apriori candidate generation and pruning"
+  },
+  "2025-reg-1B": {
+    "method": "Two-tailed one-sample z-test",
+    "approach": "State a null mean equal to the claim and a two-sided alternative, then calculate z = (sample mean − claimed mean)/(σ/√n) and compare it with the supplied critical bounds. Put the mean and standard deviation on the same scale before substitution: the paper does not specify whether its standard deviation is in proportion units or percentage points.",
+    "subtopic": "Known-variance mean testing"
+  },
+  "2025-reg-1C": {
+    "method": "Time-series component identification",
+    "approach": "Separate long-term movement from recurring calendar patterns, then consider an additive or multiplicative component model. Check whether seasonal amplitude stays constant or grows with the series level; the question does not specify that feature, so state the assumption used to choose a model.",
+    "subtopic": "Trend and seasonal model selection"
+  },
+  "2025-reg-2A": {
+    "method": "Chi-square test of independence",
+    "approach": "Form expected cell counts from row total × column total / grand total, then calculate χ² = Σ(O−E)²/E with degrees of freedom (rows−1)(columns−1). Check the expected-count assumptions, compare with the significance-level cutoff, and examine group attack proportions to describe the direction of any association.",
+    "subtopic": "Contingency-table association testing"
+  },
+  "2025-reg-2B": {
+    "method": "Hash-based candidate pruning",
+    "approach": "State an item-order convention, enumerate each unordered pair in every transaction, and apply the supplied hash function while counting repeated occurrences and collisions. Prune buckets below the support threshold, then distinguish surviving buckets from genuinely frequent pairs. Treat the stated frequent-singleton set as supplied for the exercise, since its label is inconsistent with the logs at the stated threshold.",
+    "subtopic": "Hash buckets for Apriori efficiency"
+  },
+  "2025-reg-2C": {
+    "method": "Forecast-error comparison and consistency checking",
+    "approach": "Compare absolute-error, squared-error, and percentage-error measures against the forecasting objective rather than treating them as interchangeable votes. First check metric consistency: for the same errors and scale, RMSE must be at least MAE, but the printed table violates this inequality in both rows.",
+    "subtopic": "MAE, MSE, RMSE, and MAPE"
+  },
+  "2025-reg-3A": {
+    "method": "Descriptive statistics, derived variables, and one-way ANOVA",
+    "approach": "For part (i), state the sample/population and skewness conventions, compute centered deviations, and resolve the missing separator between adjacent observations in the printed list. For part (ii), describe deriving a new column from existing variables; for part (iii), compare between-group and within-group mean squares using one-way ANOVA if the flavor ratings come from independent groups. State a significance level and the independence assumption, since the paper leaves them unspecified.",
+    "subtopic": "Dispersion, skewness, and group-mean comparison"
+  },
+  "2025-reg-3B": {
+    "method": "Association-rule threshold testing",
+    "approach": "Calculate support as joint transaction count divided by total count and confidence as joint count divided by antecedent count. Compare each measure with its own threshold and interpret the two denominators distinctly, without treating association as causation.",
+    "subtopic": "Support and confidence"
+  },
+  "2025-reg-3C": {
+    "method": "Simple and weighted moving averages",
+    "approach": "Average the actual observations in the requested trailing window to obtain the next-period SMA. Contrast equal weighting with WMA weights that sum to unity; the paper supplies no WMA weights, so restrict that comparison to the method rather than inventing a numerical WMA.",
+    "subtopic": "Moving-average window and weighting"
+  },
+  "2025-reg-4A": {
+    "method": "Vertical TID-set intersection mining",
+    "approach": "Build a transaction-ID set for each item, then intersect sets to obtain the support counts of larger itemsets. Retain sets meeting minimum support and stop extending branches that fail it. Discuss the trade-off between reusable set intersections and repeated horizontal database scans.",
+    "subtopic": "Vertical frequent-itemset mining"
+  },
+  "2025-reg-4B": {
+    "method": "Single exponential smoothing and MAE",
+    "approach": "Starting from the given initial forecast, update F(t+1) = αY(t) + (1−α)F(t) sequentially without rounding intermediate forecasts. Align each forecast with its actual value in the requested evaluation period, then average the absolute errors; exclude any future period without an observed value.",
+    "subtopic": "SES recursion and forecast-error alignment"
+  },
+  "2025-reg-4C": {
+    "method": "Association-rule interestingness evaluation",
+    "approach": "Examine how a common consequent can inflate confidence, then compare joint occurrence with the individual item frequencies. Consider measures such as lift, Kulczynski, or cosine and identify the marginal supports each requires; the supplied rule summaries alone do not provide all those inputs.",
+    "subtopic": "Consequent prevalence and pattern evaluation"
+  },
+  "2025-reg-5A": {
+    "method": "Holt's level-and-trend smoothing",
+    "approach": "State an initialization convention using the initial observation and first difference, then update the level and trend before projecting by the forecast horizon. The paper omits both smoothing constants α and β, so give the recurrence symbolically and request those parameters before attempting numerical final states or forecasts. Clarify the initial-trend indexing used in the question.",
+    "subtopic": "Holt initialization, recursion, and missing parameters"
+  },
+  "2025-reg-5B": {
+    "method": "Lift, Kulczynski, and cosine evaluation",
+    "approach": "Convert joint and marginal counts into supports, then compute lift = P(A∩B)/(P(A)P(B)), Kulc = [P(B|A)+P(A|B)]/2, and cosine = P(A∩B)/√[P(A)P(B)]. Interpret lift against the independence baseline and Kulc as an average of directional confidences, without assigning it a universal independence cutoff.",
+    "subtopic": "Association strength and directional balance"
+  },
+  "2025-reg-5C": {
+    "method": "Equal-width and equal-frequency binning",
+    "approach": "Sort the incomes, divide the full range by the requested number of bins for equal-width boundaries, and split the ordered observations into balanced groups for equal-frequency bins. State boundary-inclusion rules, then compare how each scheme represents concentration and the upper tail. For unequal-width histogram bins, use frequency density so bar area represents frequency.",
+    "subtopic": "Discretization and histogram interpretation"
+  }
+}

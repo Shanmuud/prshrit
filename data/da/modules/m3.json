@@ -1,0 +1,468 @@
+{
+  "id": "m3",
+  "number": 3,
+  "title": "Data preparation and hypothesis testing",
+  "topics": [
+    "Data quality and cleaning",
+    "Data integration",
+    "Data reduction and PCA",
+    "Sampling",
+    "Data transformation and normalization",
+    "Discretization and concept hierarchies",
+    "Hypotheses and errors",
+    "Test selection",
+    "One-sample tests",
+    "Paired tests",
+    "Two-sample tests",
+    "Two-way ANOVA",
+    "Chi-square tests"
+  ],
+  "tests": [
+    {
+      "id": "m3-t1",
+      "title": "Test 1: Preparing data",
+      "kind": "concept",
+      "questions": [
+        {
+          "id": "m3-t1-q1",
+          "type": "short",
+          "prompt": "A customer table has blank ages, conflicting addresses across copies, and yesterday's price instead of today's. Name the data-quality issue in each case.",
+          "answer": "Completeness, consistency, and timeliness, respectively.",
+          "explanation": "Blank values reduce completeness. Conflicting copies reduce consistency. A stale price is a timeliness problem.",
+          "difficulty": "easy",
+          "topic": "Data quality and cleaning",
+          "source": "Module 3 - part_A.pptx slide 3"
+        },
+        {
+          "id": "m3-t1-q2",
+          "type": "short",
+          "prompt": "Give two automatic ways to fill missing numeric values and explain one risk of using a single global constant.",
+          "answer": "Use the attribute mean or the mean within the same class. A constant may create an artificial group of records.",
+          "explanation": "Mean imputation uses observed values; class-conditional imputation preserves some group differences. A repeated placeholder can be mistaken for a meaningful value or category.",
+          "difficulty": "medium",
+          "topic": "Data quality and cleaning",
+          "source": "Module 3 - part_A.pptx slide 8"
+        },
+        {
+          "id": "m3-t1-q3",
+          "type": "mcq",
+          "prompt": "Which method smooths noisy numeric observations by replacing values inside sorted groups with a representative?",
+          "answer": "Binning",
+          "explanation": "Binning first partitions sorted observations and then uses a mean, median, or boundary value to smooth each group.",
+          "difficulty": "easy",
+          "topic": "Data quality and cleaning",
+          "source": "Module 3 - part_A.pptx slide 10",
+          "options": [
+            "Binning",
+            "Entity identification",
+            "Schema integration",
+            "Concept naming"
+          ]
+        },
+        {
+          "id": "m3-t1-q4",
+          "type": "short",
+          "prompt": "Two databases use customer_id and cust_no for the same identifier, while one records weight in kilograms and the other in pounds. What must integration resolve?",
+          "answer": "Match the schema attributes and convert weights to a common unit before combining records.",
+          "explanation": "Schema integration identifies corresponding fields. Unit conversion resolves a data-value conflict; equal numbers in different units do not necessarily describe equal weights.",
+          "difficulty": "medium",
+          "topic": "Data integration",
+          "source": "Module 3 - part_A.pptx slide 17"
+        },
+        {
+          "id": "m3-t1-q5",
+          "type": "short",
+          "prompt": "Why might both age and date of birth be redundant in an integrated dataset?",
+          "answer": "Age can be derived from date of birth and a reference date.",
+          "explanation": "Derivable attributes can repeat information. Decide whether both are needed and check that any stored age agrees with the date of birth at the intended reference date.",
+          "difficulty": "medium",
+          "topic": "Data integration",
+          "source": "Module 3 - part_A.pptx slide 18"
+        },
+        {
+          "id": "m3-t1-q6",
+          "type": "short",
+          "prompt": "Contrast roll-up with drill-down, and slice with dice in a sales cube.",
+          "answer": "Roll-up summarizes detail; drill-down exposes detail. Slice fixes a dimension value; dice restricts values across dimensions.",
+          "explanation": "Daily-to-monthly totals illustrate roll-up and country-to-city detail illustrates drill-down. Selecting one quarter is a slice; selecting certain products, regions, and quarters is a dice.",
+          "difficulty": "medium",
+          "topic": "Data reduction and PCA",
+          "source": "Module 3 - part_A.pptx slide 32 | Module 3 - part_A.pptx slide 33"
+        },
+        {
+          "id": "m3-t1-q7",
+          "type": "short",
+          "prompt": "How does PCA differ from attribute subset selection?",
+          "answer": "Subset selection retains original attributes; PCA creates new orthogonal combinations of attributes.",
+          "explanation": "PCA ranks directions by variance and projects onto selected directions. The reduced variables generally combine several original attributes.",
+          "difficulty": "medium",
+          "topic": "Data reduction and PCA",
+          "source": "Module 3 - part_A.pptx slide 38"
+        },
+        {
+          "id": "m3-t1-q8",
+          "type": "short",
+          "prompt": "Compare stepwise forward selection and backward elimination.",
+          "answer": "Forward selection starts with no attributes and adds useful ones. Backward elimination starts with all attributes and removes the least useful ones.",
+          "explanation": "Both search for a useful subset, but their starting sets and the direction of each update differ.",
+          "difficulty": "medium",
+          "topic": "Data reduction and PCA",
+          "source": "Module 3 - part_A.pptx slide 35"
+        },
+        {
+          "id": "m3-t1-q9",
+          "type": "short",
+          "prompt": "Classify regression, histograms, and clustering as parametric or nonparametric numerosity reduction.",
+          "answer": "Regression is parametric; histograms and clustering are nonparametric in this course classification.",
+          "explanation": "Regression stores fitted model parameters. Histograms retain bucket summaries, while clustering can retain representatives of groups.",
+          "difficulty": "medium",
+          "topic": "Data reduction and PCA",
+          "source": "Module 3 - part_A.pptx slide 41"
+        },
+        {
+          "id": "m3-t1-q10",
+          "type": "short",
+          "prompt": "A small age group must remain represented in a sample. Which sampling approach addresses this, and how does it work?",
+          "answer": "Stratified sampling: divide customers into age strata and sample within every stratum.",
+          "explanation": "Sampling separately within each stratum protects representation of the small group. Simple random sampling of the whole dataset may miss it.",
+          "difficulty": "medium",
+          "topic": "Sampling",
+          "source": "Module 3 - part_A.pptx slide 53"
+        },
+        {
+          "id": "m3-t1-q11",
+          "type": "short",
+          "prompt": "Why normalize attributes before a distance-based analysis when salary and age have very different scales?",
+          "answer": "To prevent the larger numeric scale from dominating the distance calculation.",
+          "explanation": "A salary difference may be numerically far larger than an age difference even when age matters. Scaling makes the contribution of attributes more comparable.",
+          "difficulty": "medium",
+          "topic": "Data transformation and normalization",
+          "source": "Module 3 - part_A.pptx slide 61"
+        },
+        {
+          "id": "m3-t1-q12",
+          "type": "long",
+          "prompt": "Explain supervised versus unsupervised discretization and describe how a concept hierarchy reduces detail.",
+          "answer": "Supervised discretization uses class labels to choose intervals; unsupervised discretization does not. A concept hierarchy replaces detailed values with broader categories.",
+          "explanation": "A decision tree can choose age cuts that separate classes. Equal-width intervals can be formed without labels. Mapping cities to states and countries, or numeric ages to age groups, supports analysis at coarser levels.",
+          "difficulty": "hard",
+          "topic": "Discretization and concept hierarchies",
+          "source": "Module 3 - part_A.pptx slide 72 | Module 3 - part_A.pptx slide 95"
+        }
+      ]
+    },
+    {
+      "id": "m3-t2",
+      "title": "Test 2: Preprocessing calculations",
+      "kind": "numerical",
+      "questions": [
+        {
+          "id": "m3-t2-q1",
+          "type": "numerical",
+          "prompt": "Synthetic practice data: observed values are 10, 20, 30 and one missing value. Fill the missing value using the mean of the observed values.",
+          "answer": "20",
+          "explanation": "The observed total is 60 and there are three observed values, so the imputed mean is 60/3 = 20. Do not count the missing value in the denominator.",
+          "difficulty": "easy",
+          "topic": "Data quality and cleaning",
+          "source": "Module 3 - part_A.pptx slide 8"
+        },
+        {
+          "id": "m3-t2-q2",
+          "type": "numerical",
+          "prompt": "Synthetic practice data: sort 2, 4, 6, 8, 10, 12 into two equal-frequency bins. Smooth by bin means and give the six resulting values in order.",
+          "answer": "4, 4, 4, 10, 10, 10",
+          "explanation": "Each bin has three values. The first mean is (2+4+6)/3 = 4; the second is (8+10+12)/3 = 10. Replace every value with its bin mean.",
+          "difficulty": "medium",
+          "topic": "Data quality and cleaning",
+          "source": "Module 3 - part_A.pptx slide 10"
+        },
+        {
+          "id": "m3-t2-q3",
+          "type": "numerical",
+          "prompt": "Synthetic practice input: an attribute has minimum 20 and maximum 100. Normalize value 50 to [0,1] using min-max normalization.",
+          "answer": "0.375",
+          "explanation": "Subtract the minimum and divide by the range: (50-20)/(100-20) = 30/80 = 0.375.",
+          "difficulty": "easy",
+          "topic": "Data transformation and normalization",
+          "source": "Module 3 - part_A.pptx slide 64"
+        },
+        {
+          "id": "m3-t2-q4",
+          "type": "numerical",
+          "prompt": "Synthetic practice input: an attribute has mean 60 and standard deviation 8. Find the z-score normalized value of value 72.",
+          "answer": "1.5",
+          "explanation": "The standardized value is (72-60)/8 = 12/8 = 1.5, so it is one and a half standard deviations above the mean.",
+          "difficulty": "easy",
+          "topic": "Data transformation and normalization",
+          "source": "Module 3 - part_A.pptx slide 65"
+        },
+        {
+          "id": "m3-t2-q5",
+          "type": "numerical",
+          "prompt": "Synthetic practice data: -12, 320, 80. Apply decimal scaling using the smallest nonnegative integer exponent j such that every absolute scaled value is below 1. Give j, then the normalized values in the original order.",
+          "answer": "j = 3; values = -0.012, 0.320, 0.080",
+          "explanation": "The largest absolute value is 320. Dividing by 100 leaves 3.2, which fails the strict bound. Dividing by 1000 makes the maximum 0.32, so j is 3.",
+          "difficulty": "medium",
+          "topic": "Data transformation and normalization",
+          "source": "Module 3 - part_A.pptx slide 66"
+        },
+        {
+          "id": "m3-t2-q6",
+          "type": "numerical",
+          "prompt": "Synthetic practice input: minimum 5, maximum 45, and 4 bins. What is the equal-width bin width?",
+          "answer": "10",
+          "explanation": "Width = (maximum - minimum)/number of bins = (45-5)/4 = 10.",
+          "difficulty": "easy",
+          "topic": "Discretization and concept hierarchies",
+          "source": "Module 3 - part_A.pptx slide 78"
+        },
+        {
+          "id": "m3-t2-q7",
+          "type": "numerical",
+          "prompt": "Synthetic practice pairs: (1,2), (2,4), (3,6). Compute population covariance using divisor n, then Pearson correlation. Round to four decimal places.",
+          "answer": "Covariance = 1.3333; correlation = 1.0000",
+          "explanation": "The means are 2 and 4. Cross-products of centered values sum to 4, giving covariance 4/3. Population variances are 2/3 and 8/3, so their standard-deviation product is 4/3 and correlation is 1.",
+          "difficulty": "medium",
+          "topic": "Data integration",
+          "source": "Module 3 - part_A.pptx slide 24"
+        },
+        {
+          "id": "m3-t2-q8",
+          "type": "numerical",
+          "prompt": "Synthetic PCA practice input: covariance-matrix eigenvalues 9, 3, 2, 1 are listed in descending order. What percentage of total variance is retained by the first two components?",
+          "answer": "80%",
+          "explanation": "The selected components account for 9+3 = 12 units of variance out of 15 total. The retained percentage is 100(12/15) = 80%.",
+          "difficulty": "medium",
+          "topic": "Data reduction and PCA",
+          "source": "Module 3 - part_A.pptx slide 39"
+        }
+      ]
+    },
+    {
+      "id": "m3-t3",
+      "title": "Test 3: Choosing and interpreting tests",
+      "kind": "concept",
+      "questions": [
+        {
+          "id": "m3-t3-q1",
+          "type": "short",
+          "prompt": "A researcher asks whether a population mean differs from a benchmark, without choosing a direction. State the null and alternative hypotheses.",
+          "answer": "The null is that the population mean equals the benchmark. The alternative is that it differs from the benchmark.",
+          "explanation": "A difference in either direction matters, so this is a two-sided alternative. State hypotheses about the population mean, not the observed sample mean.",
+          "difficulty": "easy",
+          "topic": "Hypotheses and errors",
+          "source": "Module 3 Hypothesis testing.pptx slide 2"
+        },
+        {
+          "id": "m3-t3-q2",
+          "type": "mcq",
+          "prompt": "Which statement describes a Type I error?",
+          "answer": "Rejecting a true null hypothesis",
+          "explanation": "A Type I error is a false positive. Failing to reject a false null is instead a Type II error.",
+          "difficulty": "easy",
+          "topic": "Hypotheses and errors",
+          "source": "Module 3 Hypothesis testing.pptx slide 3",
+          "options": [
+            "Rejecting a true null hypothesis",
+            "Failing to reject a false null hypothesis",
+            "Rejecting a false null hypothesis",
+            "Failing to reject a true null hypothesis"
+          ]
+        },
+        {
+          "id": "m3-t3-q3",
+          "type": "short",
+          "prompt": "What is a Type II error, and how is test power related to its probability?",
+          "answer": "A Type II error is failing to reject a false null. Power equals one minus the Type II error probability.",
+          "explanation": "Power is the probability of rejecting the null when the specified alternative is true. It complements the probability of missing that effect.",
+          "difficulty": "medium",
+          "topic": "Hypotheses and errors",
+          "source": "Module 3 Hypothesis testing.pptx slide 4"
+        },
+        {
+          "id": "m3-t3-q4",
+          "type": "mcq",
+          "prompt": "A small independent random sample comes from a normal population with unknown variance. Which test is appropriate for one population mean?",
+          "answer": "One-sample t-test",
+          "explanation": "Estimate the population standard deviation using the sample. The standardized mean difference follows a t distribution with one fewer degree of freedom than the sample size.",
+          "difficulty": "medium",
+          "topic": "Test selection",
+          "source": "Module 3 Hypothesis testing.pptx slide 7",
+          "options": [
+            "One-sample t-test",
+            "Paired t-test",
+            "Two-way ANOVA",
+            "Two-sample Z-test"
+          ]
+        },
+        {
+          "id": "m3-t3-q5",
+          "type": "short",
+          "prompt": "When is a one-sample Z-test appropriate for a population mean?",
+          "answer": "When the population standard deviation is known and the sample mean has a normal sampling distribution, exactly or through an adequate large-sample approximation.",
+          "explanation": "The known population standard deviation determines the standard error. A normal population justifies the normal sampling distribution even for a small independent random sample.",
+          "difficulty": "medium",
+          "topic": "One-sample tests",
+          "source": "Module 3 Hypothesis testing.pptx slide 17"
+        },
+        {
+          "id": "m3-t3-q6",
+          "type": "short",
+          "prompt": "A hypothesis test fails to reject its null hypothesis. Does this prove the null is true?",
+          "answer": "No. The sample did not provide enough evidence to reject it at the chosen significance level.",
+          "explanation": "Failure to reject can arise from limited power or a small effect. It is not proof of equality or absence of an effect.",
+          "difficulty": "medium",
+          "topic": "Hypotheses and errors",
+          "source": "Module 3 Hypothesis testing.pptx slide 18"
+        },
+        {
+          "id": "m3-t3-q7",
+          "type": "short",
+          "prompt": "The same employees are measured before and after training. Why use a paired t-test rather than treating the measurements as independent groups?",
+          "answer": "Each before-and-after pair belongs to one employee, so the analysis should use within-employee differences.",
+          "explanation": "The paired test evaluates the mean difference and uses the standard deviation of differences. For a small sample, the normality assumption concerns those differences.",
+          "difficulty": "medium",
+          "topic": "Paired tests",
+          "source": "Module 3 Hypothesis testing.pptx slide 30"
+        },
+        {
+          "id": "m3-t3-q8",
+          "type": "short",
+          "prompt": "State the main assumptions distinguishing a pooled two-sample t-test from Welch's t-test.",
+          "answer": "Both compare independent groups with unknown population variances. The pooled test assumes equal population variances; Welch's test allows them to differ.",
+          "explanation": "Pooling estimates a common variance. Welch uses each group's variance contribution separately and adjusts the degrees of freedom. Small-sample use also needs appropriate distributional assumptions.",
+          "difficulty": "medium",
+          "topic": "Two-sample tests",
+          "source": "Module 3 Hypothesis testing.pptx slide 51 | Module 3 Hypothesis testing.pptx slide 47"
+        },
+        {
+          "id": "m3-t3-q9",
+          "type": "short",
+          "prompt": "A study varies teaching method and study-time category and measures exam score. Name the three effects tested by two-way ANOVA.",
+          "answer": "Teaching-method main effect, study-time main effect, and their interaction.",
+          "explanation": "Main effects concern average differences for one factor across levels of the other. Interaction asks whether the effect of one factor changes across levels of the other.",
+          "difficulty": "medium",
+          "topic": "Two-way ANOVA",
+          "source": "Module 3 Hypothesis testing.pptx slide 58"
+        },
+        {
+          "id": "m3-t3-q10",
+          "type": "long",
+          "prompt": "In a two-way ANOVA, explain what it means if teaching method interacts with study time. Why can one overall teaching-method comparison conceal this?",
+          "answer": "The effect of teaching method depends on the study-time level. An overall comparison averages across those levels and can hide different or opposing effects.",
+          "explanation": "For example, one method may help at high study time but have little benefit at low study time. The interaction compares cell behavior against what would be expected from adding the two main effects alone.",
+          "difficulty": "hard",
+          "topic": "Two-way ANOVA",
+          "source": "Module 3 Hypothesis testing.pptx slide 62"
+        }
+      ]
+    },
+    {
+      "id": "m3-t4",
+      "title": "Test 4: Inference calculations",
+      "kind": "numerical",
+      "questions": [
+        {
+          "id": "m3-t4-q1",
+          "type": "numerical",
+          "prompt": "Synthetic practice input: an independent random sample from a normal population has mean 54, null mean 50, known population standard deviation 12, and size 36. Compute the one-sample Z statistic.",
+          "answer": "2",
+          "explanation": "Standard error = 12/sqrt(36) = 2. Thus Z = (54-50)/2 = 2. A decision additionally needs a specified alternative and significance level.",
+          "difficulty": "medium",
+          "topic": "One-sample tests",
+          "source": "Module 3 Hypothesis testing.pptx slide 17 | DA Formula Book_ Endterm.pdf PDF page 23 (printed page 7)"
+        },
+        {
+          "id": "m3-t4-q2",
+          "type": "numerical",
+          "prompt": "Synthetic practice input: an independent random sample from a normal population has mean 21, sample standard deviation 4, size 16, and null mean 19. Compute the one-sample t statistic and degrees of freedom.",
+          "answer": "t = 2; df = 15",
+          "explanation": "Standard error = 4/sqrt(16) = 1. The statistic is (21-19)/1 = 2, with 16-1 = 15 degrees of freedom.",
+          "difficulty": "medium",
+          "topic": "One-sample tests",
+          "source": "Module 3 Hypothesis testing.pptx slide 7 | DA Formula Book_ Endterm.pdf PDF page 23 (printed page 7)"
+        },
+        {
+          "id": "m3-t4-q3",
+          "type": "numerical",
+          "prompt": "Synthetic paired practice differences (after minus before) are 2, 4, 4, 6. Assume independent pairs with normally distributed differences. The null mean difference is zero. Compute t and degrees of freedom, rounding t to four decimals.",
+          "answer": "t = 4.8990; df = 3",
+          "explanation": "The mean difference is 4. Squared deviations sum to 8, so sample variance is 8/3 and the standard error is sqrt(8/3)/sqrt(4). Dividing 4 by that standard error gives 4.8990, with three degrees of freedom.",
+          "difficulty": "hard",
+          "topic": "Paired tests",
+          "source": "Module 3 Hypothesis testing.pptx slide 31 | DA Formula Book_ Endterm.pdf PDF page 23 (printed page 7)"
+        },
+        {
+          "id": "m3-t4-q4",
+          "type": "numerical",
+          "prompt": "Synthetic two-sample practice input: independent normal populations have sample means 105 and 100, known population standard deviations 12 and 9, and sample sizes 36 and 36. Under a null mean difference of zero, compute Z using first group minus second.",
+          "answer": "2",
+          "explanation": "The variance of the mean difference is 144/36 + 81/36 = 6.25. Standard error is 2.5, giving Z = (105-100)/2.5 = 2.",
+          "difficulty": "medium",
+          "topic": "Two-sample tests",
+          "source": "Module 3 Hypothesis testing.pptx slide 40"
+        },
+        {
+          "id": "m3-t4-q5",
+          "type": "numerical",
+          "prompt": "Synthetic pooled-test input: independent normal groups have sample means 18 and 14, sample standard deviations 4 and 4, and sample sizes 10 and 10. Assume equal population variances and null mean difference zero. Compute pooled t (first minus second) and degrees of freedom. Round t to four decimals.",
+          "answer": "t = 2.2361; df = 18",
+          "explanation": "Pooled variance = (9(16)+9(16))/18 = 16. Standard error = sqrt(16(1/10+1/10)) = sqrt(3.2). Thus t = 4/sqrt(3.2) = 2.2361; degrees of freedom = 10+10-2 = 18.",
+          "difficulty": "hard",
+          "topic": "Two-sample tests",
+          "source": "Module 3 Hypothesis testing.pptx slide 47"
+        },
+        {
+          "id": "m3-t4-q6",
+          "type": "numerical",
+          "prompt": "Synthetic Welch-test input: independent normal groups have sample means 30 and 24, sample standard deviations 9 and 8, and sample sizes 9 and 16. Under null mean difference zero, compute t (first minus second) and Welch-Satterthwaite degrees of freedom. Round both to four decimals.",
+          "answer": "t = 1.6641; df = 15.1005",
+          "explanation": "The variance contributions are 81/9 = 9 and 64/16 = 4. Thus t = 6/sqrt(13) = 1.6641. Degrees of freedom = 13 squared divided by (9 squared/8 + 4 squared/15) = 15.1005.",
+          "difficulty": "hard",
+          "topic": "Two-sample tests",
+          "source": "Module 3 Hypothesis testing.pptx slide 51"
+        },
+        {
+          "id": "m3-t4-q7",
+          "type": "numerical",
+          "prompt": "Synthetic practice input: a test has Type II error probability 0.18 at a specified alternative. What is its power as a probability?",
+          "answer": "0.82",
+          "explanation": "Power is the probability of rejecting the false null at that alternative: 1 - 0.18 = 0.82.",
+          "difficulty": "easy",
+          "topic": "Hypotheses and errors",
+          "source": "Module 3 Hypothesis testing.pptx slide 4"
+        },
+        {
+          "id": "m3-t4-q8",
+          "type": "numerical",
+          "prompt": "Synthetic balanced two-way ANOVA input: two factors each have two levels and each cell has two observations. The four cells are [4,6], [8,10], [6,8], [10,12]. Compute error sum of squares, error degrees of freedom, and error mean square, in that order.",
+          "answer": "SSE = 8; error df = 4; MSE = 2",
+          "explanation": "Cell means are 5, 9, 7, and 11. Each cell contributes two squared deviations of 1, so SSE = 8. Error degrees of freedom are ab(r-1) = 2*2*(2-1) = 4. MSE = SSE/df = 8/4 = 2.",
+          "difficulty": "hard",
+          "topic": "Two-way ANOVA",
+          "source": "Module 3 Hypothesis testing.pptx slide 64"
+        },
+        {
+          "id": "m3-t4-q9",
+          "type": "numerical",
+          "prompt": "Synthetic goodness-of-fit practice: four categories have observed counts 30, 20, 25, 25. Test against fixed equal category probabilities, with no parameters estimated from the sample. Compute the chi-square statistic and degrees of freedom.",
+          "answer": "Chi-square = 2; df = 3",
+          "explanation": "There are 100 observations, so each expected count is 25. Sum (observed-expected) squared divided by expected: 25/25 + 25/25 + 0 + 0 = 2. With four fixed-probability categories, degrees of freedom are four minus one, or three.",
+          "difficulty": "medium",
+          "topic": "Chi-square tests",
+          "source": "Module 3 Hypothesis testing.pptx slide 54"
+        },
+        {
+          "id": "m3-t4-q10",
+          "type": "numerical",
+          "prompt": "Synthetic inference practice: the Z statistic is 2 in a valid test under a two-sided alternative. Compute its p-value to four decimals. Use the standard normal distribution.",
+          "answer": "0.0455",
+          "explanation": "A two-sided p-value includes both tails: p = 2(1 - Phi(2)). Since Phi(2) is approximately 0.9772499, p is approximately 0.0455003. This would reject the null at a significance level of 0.05.",
+          "difficulty": "medium",
+          "topic": "One-sample tests",
+          "source": "Module 3 Hypothesis testing.pptx slide 20"
+        }
+      ]
+    }
+  ]
+}

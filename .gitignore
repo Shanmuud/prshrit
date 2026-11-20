@@ -4,4 +4,8 @@ data/_page.html
 __pycache__/
 *.pyc
 outbox/
+data/da/source/
+data/da/extracted/
+.artifacts/da-module-tests/
+.artifacts/da-tools/
 extract_cursor_v1.py

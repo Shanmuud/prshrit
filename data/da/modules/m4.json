@@ -1,0 +1,335 @@
+{
+  "id": "m4",
+  "number": 4,
+  "title": "Frequent itemsets and association rules",
+  "topics": [
+    "Association rules",
+    "Closed and maximal itemsets",
+    "Apriori",
+    "Apriori efficiency",
+    "FP-growth",
+    "Vertical data format",
+    "Pattern evaluation"
+  ],
+  "tests": [
+    {
+      "id": "m4-t1",
+      "title": "Test 1: Rules and frequent patterns",
+      "kind": "concept",
+      "questions": [
+        {
+          "id": "m4-t1-q1",
+          "type": "mcq",
+          "prompt": "Which statement correctly describes the support of the rule $A\\Rightarrow B$?",
+          "answer": "The fraction of all transactions containing both A and B.",
+          "explanation": "Support uses all transactions as its denominator. Confidence instead uses only transactions containing the antecedent A.",
+          "difficulty": "easy",
+          "topic": "Association rules",
+          "source": "Module 4 (1).pptx slide 4",
+          "options": [
+            "The fraction of all transactions containing both A and B.",
+            "The fraction of A transactions containing B.",
+            "The fraction of B transactions containing A.",
+            "The number of items in A."
+          ]
+        },
+        {
+          "id": "m4-t1-q2",
+          "type": "short",
+          "prompt": "Why can a rule with high confidence still describe a negative association?",
+          "answer": "The consequent may be even more common overall than it is among transactions containing the antecedent.",
+          "explanation": "Compare confidence with the consequent's support. If $P(B\\mid A)<P(B)$, lift is below one despite a seemingly high confidence.",
+          "difficulty": "medium",
+          "topic": "Pattern evaluation",
+          "source": "Module 4 (1).pptx slide 79"
+        },
+        {
+          "id": "m4-t1-q3",
+          "type": "short",
+          "prompt": "State the two stages of association-rule mining and the thresholds checked at each stage.",
+          "answer": "Find frequent itemsets using minimum support, then generate rules using minimum confidence.",
+          "explanation": "A frequent itemset has enough transaction support. Partitioning it into nonempty antecedent and consequent creates candidate rules; retain those that also meet the confidence threshold.",
+          "difficulty": "easy",
+          "topic": "Association rules",
+          "source": "Module 4 (1).pptx slide 8"
+        },
+        {
+          "id": "m4-t1-q4",
+          "type": "mcq",
+          "prompt": "Which condition makes a frequent itemset maximal?",
+          "answer": "It has no frequent proper superset.",
+          "explanation": "Closedness only rules out a proper superset with equal support. Maximality rules out every frequent proper superset.",
+          "difficulty": "easy",
+          "topic": "Closed and maximal itemsets",
+          "source": "Module 4 (1).pptx slide 10",
+          "options": [
+            "It has no frequent proper superset.",
+            "Every subset has the same support.",
+            "It has the greatest support in the database.",
+            "It contains every item in the database."
+          ]
+        },
+        {
+          "id": "m4-t1-q5",
+          "type": "short",
+          "prompt": "Does maximal frequent imply closed frequent? Explain without relying on an example.",
+          "answer": "Yes. A frequent proper superset with equal support would contradict maximality.",
+          "explanation": "If X is frequent, any proper superset with the same support would also be frequent. Since maximal X has no such frequent superset, it must be closed.",
+          "difficulty": "medium",
+          "topic": "Closed and maximal itemsets",
+          "source": "Module 4 (1).pptx slide 10"
+        },
+        {
+          "id": "m4-t1-q6",
+          "type": "short",
+          "prompt": "A frequent set X has a proper superset Y with the same support. Is X closed, and what transaction-level fact does this equality imply?",
+          "answer": "X is not closed. Every transaction containing X also contains Y.",
+          "explanation": "Transactions containing Y are a subset of those containing X. Equal counts force the two transaction sets to coincide, so adding Y's extra items does not reduce support.",
+          "difficulty": "medium",
+          "topic": "Closed and maximal itemsets",
+          "source": "Module 4 (1).pptx slide 67"
+        },
+        {
+          "id": "m4-t1-q7",
+          "type": "short",
+          "prompt": "State the Apriori property and explain why it allows pruning a candidate whose subset is infrequent.",
+          "answer": "Every nonempty subset of a frequent itemset is frequent; a candidate with an infrequent subset cannot be frequent.",
+          "explanation": "Adding items can only retain or remove matching transactions. A superset's support cannot exceed a subset's support, so an infrequent subset rules out all its supersets.",
+          "difficulty": "easy",
+          "topic": "Apriori",
+          "source": "Module 4 (1).pptx slide 14"
+        },
+        {
+          "id": "m4-t1-q8",
+          "type": "long",
+          "prompt": "Describe one complete Apriori level after the frequent singleton set has been found.",
+          "answer": "Join the previous frequent itemsets to form candidates, prune candidates with infrequent subsets, count the surviving candidates, then retain those meeting minimum support.",
+          "explanation": "Use consistent item ordering during joining to avoid duplicates. Subset pruning reduces counting work. Scan transactions to obtain candidate support and produce the next frequent level. Stop when no frequent itemsets remain.",
+          "difficulty": "medium",
+          "topic": "Apriori",
+          "source": "Module 4 (1).pptx slide 13 | Module 4 (1).pptx slide 14 | Module 4 (1).pptx slide 15"
+        }
+      ]
+    },
+    {
+      "id": "m4-t2",
+      "title": "Test 2: Efficient mining methods",
+      "kind": "concept",
+      "questions": [
+        {
+          "id": "m4-t2-q1",
+          "type": "short",
+          "prompt": "Why is a low-count hash bucket sufficient to discard a candidate pair, while a high-count bucket does not prove that pair frequent?",
+          "answer": "A bucket contains the candidate's occurrences plus possible collisions, so its count is an upper bound on that candidate's count.",
+          "explanation": "If even the upper bound is below minimum support, the candidate cannot qualify. Other pairs can collide in the same bucket, so a high bucket count still requires exact counting.",
+          "difficulty": "medium",
+          "topic": "Apriori efficiency",
+          "source": "Module 4 (1).pptx slide 27"
+        },
+        {
+          "id": "m4-t2-q2",
+          "type": "short",
+          "prompt": "When can transaction reduction remove a transaction from later Apriori scans?",
+          "answer": "When it contains no frequent itemset at the current size.",
+          "explanation": "Any larger frequent itemset would have a frequent subset of the current size. A transaction containing no such subset cannot contribute to a larger frequent candidate.",
+          "difficulty": "easy",
+          "topic": "Apriori efficiency",
+          "source": "Module 4 (1).pptx slide 29"
+        },
+        {
+          "id": "m4-t2-q3",
+          "type": "long",
+          "prompt": "Explain why partition-based mining can find all globally frequent itemsets using two full database scans.",
+          "answer": "Every globally frequent itemset must be locally frequent in at least one partition under the same relative support threshold.",
+          "explanation": "If it were below the threshold in every partition, summing its counts would leave it below the global threshold too. First mine each partition and union the local candidates; then use a second scan to count them globally and remove false positives.",
+          "difficulty": "hard",
+          "topic": "Apriori efficiency",
+          "source": "Module 4 (1).pptx slide 30"
+        },
+        {
+          "id": "m4-t2-q4",
+          "type": "short",
+          "prompt": "What risk does random sampling introduce in frequent-itemset mining, and how does the deck suggest reducing it?",
+          "answer": "The sample may miss globally frequent patterns; use a lower sample support threshold and validate candidates against the full database.",
+          "explanation": "Sampling saves work but its supports need not match the full data. A lower threshold reduces missed candidates, while a full scan checks their true supports. It does not turn a small random sample into an exact census.",
+          "difficulty": "medium",
+          "topic": "Apriori efficiency",
+          "source": "Module 4 (1).pptx slide 34"
+        },
+        {
+          "id": "m4-t2-q5",
+          "type": "short",
+          "prompt": "How does dynamic itemset counting differ from Apriori's candidate-generation schedule?",
+          "answer": "It can introduce candidates at block boundaries during a database scan.",
+          "explanation": "Apriori waits for a complete level scan before introducing larger candidates. Dynamic itemset counting tracks counts across blocks and can start counting newly eligible candidates earlier.",
+          "difficulty": "medium",
+          "topic": "Apriori efficiency",
+          "source": "Module 4 (1).pptx slide 37"
+        },
+        {
+          "id": "m4-t2-q6",
+          "type": "long",
+          "prompt": "Describe how an FP-tree compresses transactions and how FP-growth mines it.",
+          "answer": "Order frequent items consistently by support, insert transactions with shared prefixes, then recursively mine conditional pattern bases and conditional FP-trees.",
+          "explanation": "Discard infrequent items first. Shared prefix nodes accumulate counts, while header links connect equal items in different branches. For a suffix item, collect its counted prefix paths to build a conditional database and grow longer frequent patterns without Apriori-style candidate enumeration.",
+          "difficulty": "hard",
+          "topic": "FP-growth",
+          "source": "Module 4 (1).pptx slide 42 | Module 4 (1).pptx slide 43 | Module 4 (1).pptx slide 44"
+        },
+        {
+          "id": "m4-t2-q7",
+          "type": "short",
+          "prompt": "How is an itemset's support obtained in the vertical data format?",
+          "answer": "Intersect its items' transaction-ID sets and count the IDs in the intersection.",
+          "explanation": "An ID belongs to the intersection exactly when that transaction contains every item. The stored ID sets allow larger-itemset support counts without rescanning the original transaction database.",
+          "difficulty": "easy",
+          "topic": "Vertical data format",
+          "source": "Module 4 (1).pptx slide 53"
+        },
+        {
+          "id": "m4-t2-q8",
+          "type": "mcq",
+          "prompt": "Which measure is NOT null-invariant?",
+          "answer": "Lift",
+          "explanation": "Adding transactions containing neither item changes the total used by lift. All-confidence, Kulczynski and cosine can be computed from the three relevant itemset counts without the total.",
+          "difficulty": "medium",
+          "topic": "Pattern evaluation",
+          "source": "Module 4 (1).pptx slide 91",
+          "options": [
+            "Lift",
+            "All-confidence",
+            "Kulczynski",
+            "Cosine"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m4-t3",
+      "title": "Test 3: Support and pattern measures",
+      "kind": "numerical",
+      "questions": [
+        {
+          "id": "m4-t3-q1",
+          "type": "numerical",
+          "prompt": "Original practice data: among 100 baskets, 40 contain A, 50 contain B and 30 contain both. Find the support and confidence of $A\\Rightarrow B$, as percentages.",
+          "answer": "Support = 30%; confidence = 75%.",
+          "explanation": "Support is $30/100\\times100=30\\%$. Confidence uses the A baskets: $30/40\\times100=75\\%$.",
+          "difficulty": "easy",
+          "topic": "Association rules",
+          "source": "Module 4 (1).pptx slide 4"
+        },
+        {
+          "id": "m4-t3-q2",
+          "type": "numerical",
+          "prompt": "Original practice data: among 100 baskets, 40 contain A, 50 contain B and 30 contain both. Compute lift, to two decimals.",
+          "answer": "1.50",
+          "explanation": "$\\operatorname{lift}=P(A\\cap B)/(P(A)P(B))=0.30/(0.40\\times0.50)=1.50$. Co-occurrence exceeds that expected under independence.",
+          "difficulty": "easy",
+          "topic": "Pattern evaluation",
+          "source": "Module 4 (1).pptx slide 77"
+        },
+        {
+          "id": "m4-t3-q3",
+          "type": "numerical",
+          "prompt": "Original practice data: A appears in 40 transactions, B in 50, and both in 30. Compute all-confidence and max-confidence as proportions.",
+          "answer": "All-confidence = 0.60; max-confidence = 0.75.",
+          "explanation": "The two directional confidences are $30/40=0.75$ and $30/50=0.60$. All-confidence is their minimum; max-confidence is their maximum.",
+          "difficulty": "medium",
+          "topic": "Pattern evaluation",
+          "source": "Module 4 (1).pptx slide 82 | Module 4 (1).pptx slide 83"
+        },
+        {
+          "id": "m4-t3-q4",
+          "type": "numerical",
+          "prompt": "Original practice data: A appears in 40 transactions, B in 50, and both in 30. Compute Kulczynski as a proportion.",
+          "answer": "0.675",
+          "explanation": "Kulczynski averages the directional confidences: $(30/40+30/50)/2=(0.75+0.60)/2=0.675$.",
+          "difficulty": "medium",
+          "topic": "Pattern evaluation",
+          "source": "Module 4 (1).pptx slide 84"
+        },
+        {
+          "id": "m4-t3-q5",
+          "type": "numerical",
+          "prompt": "Original practice data: A appears in 40 transactions, B in 50, and both in 30. Compute cosine to four decimals.",
+          "answer": "0.6708",
+          "explanation": "Using support counts, cosine is $30/\\sqrt{40\\times50}=0.670820\\ldots$. The total database size cancels.",
+          "difficulty": "medium",
+          "topic": "Pattern evaluation",
+          "source": "Module 4 (1).pptx slide 85"
+        },
+        {
+          "id": "m4-t3-q6",
+          "type": "numerical",
+          "prompt": "Original practice data: A appears in 40 transactions, B in 50, and both in 30. Compute the imbalance ratio to four decimals.",
+          "answer": "0.1667",
+          "explanation": "$IR=|40-50|/(40+50-30)=10/60=0.166666\\ldots$. The denominator counts baskets containing at least one of the items.",
+          "difficulty": "medium",
+          "topic": "Pattern evaluation",
+          "source": "Module 4 (1).pptx slide 92"
+        },
+        {
+          "id": "m4-t3-q7",
+          "type": "numerical",
+          "prompt": "Original practice data: transactions are {A,B}, {A,B}, {A,C}, {A,B,C}, {B,C}. With minimum support count 3, report the number of frequent singletons, pairs and triples, in that order.",
+          "answer": "3, 1, 0",
+          "explanation": "Singleton supports are A:4, B:4, C:3. Pair supports are AB:3, AC:2, BC:2. ABC occurs once. Only AB reaches the threshold among pairs, and no triple does.",
+          "difficulty": "medium",
+          "topic": "Apriori",
+          "source": "Module 4 (1).pptx slide 14"
+        },
+        {
+          "id": "m4-t3-q8",
+          "type": "numerical",
+          "prompt": "Original practice data: $T(A)=\\{1,2,4,6\\}$ and $T(B)=\\{2,3,4,6\\}$. What is the support count of {A,B}?",
+          "answer": "3",
+          "explanation": "The intersection is $\\{2,4,6\\}$. Its cardinality is the support count, so the pair appears in three transactions.",
+          "difficulty": "easy",
+          "topic": "Vertical data format",
+          "source": "Module 4 (1).pptx slide 53"
+        },
+        {
+          "id": "m4-t3-q9",
+          "type": "numerical",
+          "prompt": "Original practice data: an FP conditional pattern base for suffix Z contains the counted paths [A,B]:2, [A]:1 and [B]:1. Find support counts of {A,Z}, {B,Z} and {A,B,Z}, in that order.",
+          "answer": "3, 3, 2",
+          "explanation": "Add path multiplicities containing the required prefix items. A occurs with Z $2+1=3$ times, B occurs with Z $2+1=3$ times, and A and B occur together with Z twice.",
+          "difficulty": "medium",
+          "topic": "FP-growth",
+          "source": "Module 4 (1).pptx slide 44"
+        },
+        {
+          "id": "m4-t3-q10",
+          "type": "numerical",
+          "prompt": "Original practice data: transactions are {A,B}, {A,B}, {A}. At minimum support count 2, how many nonempty closed frequent itemsets and maximal frequent itemsets are there, respectively?",
+          "answer": "2, 1",
+          "explanation": "A has support 3, B has support 2, and AB has support 2. A and AB are closed; B is not closed because AB has equal support. Only AB is maximal frequent.",
+          "difficulty": "hard",
+          "topic": "Closed and maximal itemsets",
+          "source": "Module 4 (1).pptx slide 10"
+        },
+        {
+          "id": "m4-t3-q11",
+          "type": "numerical",
+          "prompt": "Original practice data: a 2-by-2 table has rows A present/absent and columns B present/absent, with observed counts [[30,10],[20,40]]. Calculate Pearson's chi-square statistic, without continuity correction, to four decimals.",
+          "answer": "16.6667",
+          "explanation": "Row totals are 40 and 60; column totals are 50 and 50. Under independence, expected counts are [[20,20],[30,30]]. Sum $(O-E)^2/E$: $100/20+100/20+100/30+100/30=16.666666\\ldots$.",
+          "difficulty": "hard",
+          "topic": "Pattern evaluation",
+          "source": "Module 4 (1).pptx slide 80"
+        },
+        {
+          "id": "m4-t3-q12",
+          "type": "numerical",
+          "prompt": "Original practice data: 100 baskets include 40 with A, 50 with B and 30 with both. Add 100 baskets containing neither A nor B. Compute the new lift and the unchanged Kulczynski value.",
+          "answer": "Lift = 3.00; Kulczynski = 0.675.",
+          "explanation": "New supports are $30/200$, $40/200$ and $50/200$, so lift is $0.15/(0.20\\times0.25)=3$. Directional confidences remain $30/40$ and $30/50$, so Kulczynski remains $0.675$.",
+          "difficulty": "hard",
+          "topic": "Pattern evaluation",
+          "source": "Module 4 (1).pptx slide 91"
+        }
+      ]
+    }
+  ]
+}

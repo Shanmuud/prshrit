@@ -1,0 +1,376 @@
+{
+  "id": "m5",
+  "number": 5,
+  "title": "Time-series forecasting",
+  "topics": [
+    "Time-series components",
+    "Forecast accuracy",
+    "Moving averages",
+    "Exponential smoothing",
+    "Seasonality",
+    "Regression forecasting",
+    "Stationarity and white noise",
+    "ARMA and ARIMA"
+  ],
+  "tests": [
+    {
+      "id": "m5-t1",
+      "title": "Test 1: Forecasting foundations",
+      "kind": "concept",
+      "questions": [
+        {
+          "id": "m5-t1-q1",
+          "type": "short",
+          "prompt": "Distinguish a univariate time series from a multivariate time series using a demand-forecasting example.",
+          "answer": "A univariate series records demand over time; a multivariate series also records variables such as price and promotion over time.",
+          "explanation": "The distinction is the number of observed variables, not the number of dates. Both retain chronological order, usually at regular intervals.",
+          "difficulty": "easy",
+          "topic": "Time-series components",
+          "source": "Module 5 updated new.pptx slide 6"
+        },
+        {
+          "id": "m5-t1-q2",
+          "type": "mcq",
+          "prompt": "A retailer's demand rises during the same festival season each year. Which time-series component best describes this recurring pattern?",
+          "answer": "Seasonal component",
+          "explanation": "Seasonality repeats at a regular calendar frequency. A long-term upward movement is trend; irregular economic cycles do not have a fixed seasonal period.",
+          "difficulty": "easy",
+          "topic": "Time-series components",
+          "source": "Module 5 updated new.pptx slide 8",
+          "options": [
+            "Seasonal component",
+            "Trend component",
+            "Cyclical component",
+            "Irregular component"
+          ]
+        },
+        {
+          "id": "m5-t1-q3",
+          "type": "short",
+          "prompt": "When would you choose an additive seasonal model instead of a multiplicative seasonal model?",
+          "answer": "When seasonal fluctuations stay roughly constant in absolute size as the series level changes.",
+          "explanation": "An additive model adds seasonal effects to the level. A multiplicative model uses seasonal factors, so the absolute size of seasonal variation grows or shrinks with the level.",
+          "difficulty": "easy",
+          "topic": "Time-series components",
+          "source": "Module 5 updated new.pptx slide 9"
+        },
+        {
+          "id": "m5-t1-q4",
+          "type": "short",
+          "prompt": "Why is a larger moving-average window smoother but slower to react?",
+          "answer": "It averages more past observations, reducing the influence of each recent observation.",
+          "explanation": "This can suppress random fluctuations but also retains more older data after a genuine level change. The window size therefore trades responsiveness against smoothing.",
+          "difficulty": "easy",
+          "topic": "Moving averages",
+          "source": "Module 5 updated new.pptx slide 28"
+        },
+        {
+          "id": "m5-t1-q5",
+          "type": "short",
+          "prompt": "Why does single exponential smoothing often produce systematic underforecasts for a steadily rising series?",
+          "answer": "It updates a level estimate but has no explicit trend term.",
+          "explanation": "The forecast combines the latest observation with the previous forecast. It tends to trail sustained growth. Holt's method adds a separately updated trend and projects it forward.",
+          "difficulty": "medium",
+          "topic": "Exponential smoothing",
+          "source": "Module 5 updated new.pptx slide 45"
+        },
+        {
+          "id": "m5-t1-q6",
+          "type": "mcq",
+          "prompt": "Which method explicitly updates level, trend and seasonality?",
+          "answer": "Holt-Winters triple exponential smoothing",
+          "explanation": "Single exponential smoothing updates a level; Holt's method adds a trend. Holt-Winters also updates a seasonal factor.",
+          "difficulty": "easy",
+          "topic": "Exponential smoothing",
+          "source": "Module 5 updated new.pptx slide 55",
+          "options": [
+            "Holt-Winters triple exponential smoothing",
+            "Single exponential smoothing",
+            "Simple moving average",
+            "Holt's double exponential smoothing"
+          ]
+        },
+        {
+          "id": "m5-t1-q7",
+          "type": "short",
+          "prompt": "In seasonal regression forecasting, why divide observed demand by a seasonal index before fitting, then multiply the prediction by that index?",
+          "answer": "Division removes multiplicative seasonal effects; multiplication restores them to the forecast.",
+          "explanation": "Fit the regression to de-seasonalized demand so the explanatory-variable relationship is not simply absorbing the recurring seasonal multiplier. Return to demand units by re-seasonalizing the prediction.",
+          "difficulty": "medium",
+          "topic": "Regression forecasting",
+          "source": "Module 5 updated new.pptx slide 77"
+        },
+        {
+          "id": "m5-t1-q8",
+          "type": "short",
+          "prompt": "What makes MAPE convenient for comparing forecast scales, and what happens if an actual value is zero?",
+          "answer": "MAPE expresses errors as percentages, but it is undefined when an actual value used as a denominator is zero.",
+          "explanation": "Each term divides an absolute forecast error by the actual value. This removes units for positive actuals. A zero denominator prevents that term from being calculated, so the standard formula cannot be applied unchanged.",
+          "difficulty": "medium",
+          "topic": "Forecast accuracy",
+          "source": "Module 5 updated new.pptx slide 11"
+        }
+      ]
+    },
+    {
+      "id": "m5-t2",
+      "title": "Test 2: Forecast calculations",
+      "kind": "numerical",
+      "questions": [
+        {
+          "id": "m5-t2-q1",
+          "type": "numerical",
+          "prompt": "Original practice series: demand in four consecutive weeks is 10, 12, 14, 18. Forecast week 5 with a three-period simple moving average, to two decimals.",
+          "answer": "14.67",
+          "explanation": "Use only the latest three observations: $(12+14+18)/3=44/3=14.6666\\ldots$.",
+          "difficulty": "easy",
+          "topic": "Moving averages",
+          "source": "Module 5 updated new.pptx slide 16 | DA Formula Book_ Endterm.pdf PDF page 12 (printed page 18)"
+        },
+        {
+          "id": "m5-t2-q2",
+          "type": "numerical",
+          "prompt": "Original practice series: the latest three demands, oldest to newest, are 12, 14, 18. Forecast the next period with weights 0.2, 0.3, 0.5 in that order.",
+          "answer": "15.6",
+          "explanation": "The weights sum to one. The weighted forecast is $0.2(12)+0.3(14)+0.5(18)=2.4+4.2+9=15.6$.",
+          "difficulty": "easy",
+          "topic": "Moving averages",
+          "source": "Module 5 updated new.pptx slide 17 | DA Formula Book_ Endterm.pdf PDF page 12 (printed page 18)"
+        },
+        {
+          "id": "m5-t2-q3",
+          "type": "numerical",
+          "prompt": "Original practice inputs: latest actual demand is 120, current forecast is 100, and the SES smoothing constant is 0.3. Compute the next forecast.",
+          "answer": "106",
+          "explanation": "$F_{t+1}=\\alpha Y_t+(1-\\alpha)F_t=0.3(120)+0.7(100)=106$.",
+          "difficulty": "easy",
+          "topic": "Exponential smoothing",
+          "source": "Module 5 updated new.pptx slide 32"
+        },
+        {
+          "id": "m5-t2-q4",
+          "type": "numerical",
+          "prompt": "Original practice series: actuals are 20, 24, 22. Use SES with smoothing constant 0.5 and initial forecast 20. Find the forecasts for periods 2, 3 and 4.",
+          "answer": "20, 22, 22",
+          "explanation": "Period 2: $0.5(20)+0.5(20)=20$. Period 3: $0.5(24)+0.5(20)=22$. Period 4: $0.5(22)+0.5(22)=22$.",
+          "difficulty": "medium",
+          "topic": "Exponential smoothing",
+          "source": "Module 5 updated new.pptx slide 38"
+        },
+        {
+          "id": "m5-t2-q5",
+          "type": "numerical",
+          "prompt": "Original practice forecasts: actual values are 100, 200 and forecasts are 90, 220. Calculate MAE, MAPE in percent, MSE and RMSE, in that order. Round RMSE to four decimals.",
+          "answer": "15, 10%, 250, 15.8114",
+          "explanation": "Errors are 10 and -20. MAE is $(10+20)/2=15$. MAPE is $((10/100)+(20/200))/2\\times100=10\\%$. MSE is $(10^2+20^2)/2=250$; RMSE is $\\sqrt{250}=15.811388\\ldots$.",
+          "difficulty": "medium",
+          "topic": "Forecast accuracy",
+          "source": "Module 5 updated new.pptx slide 11 | DA Formula Book_ Endterm.pdf PDF page 12 (printed page 18)"
+        },
+        {
+          "id": "m5-t2-q6",
+          "type": "numerical",
+          "prompt": "Original practice Holt state: previous level 50, previous trend 4, latest actual 60, level constant 0.5 and trend constant 0.25. Find the updated level, trend and next forecast.",
+          "answer": "57, 4.75, 61.75",
+          "explanation": "Current forecast is $50+4=54$. Updated level is $0.5(60)+0.5(54)=57$. Updated trend is $0.25(57-50)+0.75(4)=4.75$. The next forecast is $57+4.75=61.75$.",
+          "difficulty": "medium",
+          "topic": "Exponential smoothing",
+          "source": "Module 5 updated new.pptx slide 45"
+        },
+        {
+          "id": "m5-t2-q7",
+          "type": "numerical",
+          "prompt": "Original practice Holt state: current level 80 and trend 3. What is the forecast four periods ahead?",
+          "answer": "92",
+          "explanation": "Holt's multi-step forecast is $F_{t+h}=L_t+hT_t$. Thus $80+4(3)=92$.",
+          "difficulty": "easy",
+          "topic": "Exponential smoothing",
+          "source": "Module 5 updated new.pptx slide 46"
+        },
+        {
+          "id": "m5-t2-q8",
+          "type": "numerical",
+          "prompt": "Original practice data: two years of quarterly demand are [20,30,40,10] and [30,40,50,20]. Use the method of averages to find the four seasonal indices in quarter order, to four decimals.",
+          "answer": "0.8333, 1.1667, 1.5000, 0.5000",
+          "explanation": "Quarter averages are 25, 35, 45, 15 and their mean is 30. Divide each by 30 to obtain the indices. Their sum is four, as expected for quarterly multiplicative indices.",
+          "difficulty": "medium",
+          "topic": "Seasonality",
+          "source": "Module 5 updated new.pptx slide 57"
+        },
+        {
+          "id": "m5-t2-q9",
+          "type": "numerical",
+          "prompt": "Original practice Holt-Winters state: current level 100, trend 5 and the seasonal index for the next period from the preceding seasonal cycle is 1.2. Compute the one-step forecast.",
+          "answer": "126",
+          "explanation": "The multiplicative forecast is $(L_t+T_t)S_{t+1-c}=(100+5)(1.2)=126$.",
+          "difficulty": "easy",
+          "topic": "Seasonality",
+          "source": "Module 5 updated new.pptx slide 55"
+        },
+        {
+          "id": "m5-t2-q10",
+          "type": "numerical",
+          "prompt": "Original practice model: de-seasonalized demand forecast is $500-10p$, where p is price. At price 20 and seasonal index 1.2, calculate the demand forecast.",
+          "answer": "360",
+          "explanation": "First predict de-seasonalized demand: $500-10(20)=300$. Restore seasonality: $300(1.2)=360$.",
+          "difficulty": "medium",
+          "topic": "Regression forecasting",
+          "source": "Module 5 updated new.pptx slide 77"
+        },
+        {
+          "id": "m5-t2-q11",
+          "type": "numerical",
+          "prompt": "Original practice model: $F_t=10+2t$. Forecast at time 6, then calculate the error defined as actual minus forecast if actual demand is 25.",
+          "answer": "Forecast = 22; error = 3.",
+          "explanation": "Substitute $t=6$: $10+2(6)=22$. The signed error is $25-22=3$, so this forecast is below the actual demand.",
+          "difficulty": "easy",
+          "topic": "Regression forecasting",
+          "source": "Module 5 updated new.pptx slide 71"
+        },
+        {
+          "id": "m5-t2-q12",
+          "type": "numerical",
+          "prompt": "Original practice Holt-Winters inputs: previous level 100, previous trend 5, prior-cycle seasonal index 1.2, actual demand 132, and all three smoothing constants 0.5. Find the updated level, trend and seasonal index, rounding the index to four decimals.",
+          "answer": "107.5, 6.25, 1.2140",
+          "explanation": "Level: $0.5(132/1.2)+0.5(100+5)=107.5$. Trend: $0.5(107.5-100)+0.5(5)=6.25$. Seasonal index: $0.5(132/107.5)+0.5(1.2)=1.213953\\ldots$.",
+          "difficulty": "hard",
+          "topic": "Seasonality",
+          "source": "Module 5 updated new.pptx slide 55"
+        }
+      ]
+    },
+    {
+      "id": "m5-t3",
+      "title": "Test 3: Stationarity, ARMA and ARIMA",
+      "kind": "mixed",
+      "questions": [
+        {
+          "id": "m5-t3-q1",
+          "type": "short",
+          "prompt": "State the weak-stationarity conditions relevant to the course's AR models.",
+          "answer": "The mean and variance are constant over time, and covariance depends on lag rather than calendar time.",
+          "explanation": "A time shift should not change these moments. A systematic trend violates the constant-mean condition and motivates transformation or differencing before fitting a stationary model.",
+          "difficulty": "medium",
+          "topic": "Stationarity and white noise",
+          "source": "Module 5 updated new.pptx slide 91"
+        },
+        {
+          "id": "m5-t3-q2",
+          "type": "short",
+          "prompt": "What should white-noise residuals look like, and why do persistent residual correlations matter?",
+          "answer": "They should have zero mean, constant variance and no serial correlation; persistent correlation suggests predictable structure remains.",
+          "explanation": "The deck uses normally distributed white-noise errors. Regardless of that distributional assumption, serially correlated residuals indicate that the fitted forecast model has not captured all time dependence.",
+          "difficulty": "medium",
+          "topic": "Stationarity and white noise",
+          "source": "Module 5 updated new.pptx slide 92"
+        },
+        {
+          "id": "m5-t3-q3",
+          "type": "mcq",
+          "prompt": "How does an MA process differ from a simple moving-average forecast?",
+          "answer": "An MA process uses lagged innovations; a simple moving average averages recent observations.",
+          "explanation": "The shared name hides different inputs. The stochastic MA model includes current and past shocks, whereas the smoothing method averages measured series values.",
+          "difficulty": "medium",
+          "topic": "ARMA and ARIMA",
+          "source": "Module 5 updated new.pptx slide 96",
+          "options": [
+            "An MA process uses lagged innovations; a simple moving average averages recent observations.",
+            "Both always average the same observations with equal weights.",
+            "An MA process cannot contain a mean term.",
+            "A simple moving average requires estimated residuals."
+          ]
+        },
+        {
+          "id": "m5-t3-q4",
+          "type": "short",
+          "prompt": "For an ARIMA(p,d,q) model, what does each parameter mean and which transformation is decided first for a non-stationary series?",
+          "answer": "p is the autoregressive order, d the differencing order and q the moving-average order. Decide the needed differencing first.",
+          "explanation": "After obtaining a stationary transformed series, use its ACF and PACF to propose AR and MA orders. Identification is provisional and requires model and residual checking.",
+          "difficulty": "easy",
+          "topic": "ARMA and ARIMA",
+          "source": "Module 5 updated new.pptx slide 113"
+        },
+        {
+          "id": "m5-t3-q5",
+          "type": "numerical",
+          "prompt": "Original practice series: 10, 13, 17, 22. Compute its first differences, in order.",
+          "answer": "3, 4, 5",
+          "explanation": "Subtract each previous observation from the next: $13-10=3$, $17-13=4$, $22-17=5$. Four observations give three differences.",
+          "difficulty": "easy",
+          "topic": "ARMA and ARIMA",
+          "source": "Module 5 updated new.pptx slide 112"
+        },
+        {
+          "id": "m5-t3-q6",
+          "type": "numerical",
+          "prompt": "Original practice series: 10, 13, 17, 22. Compute its second differences, in order.",
+          "answer": "1, 1",
+          "explanation": "First differences are 3, 4, 5. Difference again: $4-3=1$ and $5-4=1$.",
+          "difficulty": "medium",
+          "topic": "ARMA and ARIMA",
+          "source": "Module 5 updated new.pptx slide 112"
+        },
+        {
+          "id": "m5-t3-q7",
+          "type": "numerical",
+          "prompt": "Original practice series: 1, 2, 3, 4. Compute the sample lag-one autocorrelation using the deck's common full-series sum-of-squared-deviations denominator.",
+          "answer": "0.25",
+          "explanation": "The mean is 2.5 and deviations are -1.5, -0.5, 0.5, 1.5. The numerator is $0.75-0.25+0.75=1.25$ and denominator is $2.25+0.25+0.25+2.25=5$. Their ratio is $0.25$.",
+          "difficulty": "medium",
+          "topic": "ARMA and ARIMA",
+          "source": "Module 5 updated new.pptx slide 94"
+        },
+        {
+          "id": "m5-t3-q8",
+          "type": "numerical",
+          "prompt": "Original practice inputs: a stationary series has 100 observations. Compute the approximate positive ACF significance threshold using $1.96/\\sqrt n$.",
+          "answer": "0.196",
+          "explanation": "$1.96/\\sqrt{100}=1.96/10=0.196$. Compare the absolute autocorrelation against this threshold for the course's approximate individual-lag check.",
+          "difficulty": "easy",
+          "topic": "ARMA and ARIMA",
+          "source": "Module 5 updated new.pptx slide 95"
+        },
+        {
+          "id": "m5-t3-q9",
+          "type": "short",
+          "prompt": "A stationary series has a gradually decaying ACF and a PACF that cuts off after its first lag. Which simple model would you try first, and is the pattern conclusive?",
+          "answer": "Try AR(1); the pattern is a model-identification clue rather than conclusive proof.",
+          "explanation": "For an AR process the ACF decays while the PACF cuts off at the AR order. Fit the proposed model and check its residuals before accepting it.",
+          "difficulty": "medium",
+          "topic": "ARMA and ARIMA",
+          "source": "Module 5 updated new.pptx slide 95"
+        },
+        {
+          "id": "m5-t3-q10",
+          "type": "short",
+          "prompt": "After differencing a series once, its ACF cuts off after the first lag and its PACF decays gradually. Which simple ARIMA model would you try first?",
+          "answer": "ARIMA(0,1,1).",
+          "explanation": "One difference gives d=1. The stationary differenced series has the usual MA(1) identification pattern, giving p=0 and q=1. Residual checking is still required.",
+          "difficulty": "medium",
+          "topic": "ARMA and ARIMA",
+          "source": "Module 5 updated new.pptx slide 96 | Module 5 updated new.pptx slide 113"
+        },
+        {
+          "id": "m5-t3-q11",
+          "type": "numerical",
+          "prompt": "Original practice fitted AR model: $Y_{t+1}=5+0.8Y_t+\\epsilon_{t+1}$ and $Y_t=20$. With the future innovation's conditional expectation zero, calculate the one-step forecast.",
+          "answer": "21",
+          "explanation": "Substitute the latest observation and set the unknown future innovation to its conditional mean: $5+0.8(20)=21$.",
+          "difficulty": "easy",
+          "topic": "ARMA and ARIMA",
+          "source": "Module 5 updated new.pptx slide 93"
+        },
+        {
+          "id": "m5-t3-q12",
+          "type": "numerical",
+          "prompt": "Original practice fitted MA model: $Y_{t+1}=50+0.4\\epsilon_t+\\epsilon_{t+1}$. The latest innovation is -5 and the next innovation has conditional expectation zero. Calculate the forecast using the signs in this equation.",
+          "answer": "48",
+          "explanation": "The equation explicitly uses a positive coefficient on the previous innovation. The forecast is $50+0.4(-5)+0=48$.",
+          "difficulty": "medium",
+          "topic": "ARMA and ARIMA",
+          "source": "Module 5 updated new.pptx slide 96"
+        }
+      ]
+    }
+  ]
+}

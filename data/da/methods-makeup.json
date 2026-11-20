@@ -1,0 +1,77 @@
+{
+  "2025-makeup-1A": {
+    "method": "Apriori and rule generation",
+    "approach": "Count singleton supports, join frequent sets level by level, and prune any candidate with an infrequent subset before counting its support. From the longest frequent sets, form rules with nonempty disjoint antecedents and consequents; check minimum support and confidence using count(antecedent ∪ consequent) / count(antecedent).",
+    "subtopic": "Frequent itemsets and strong association rules"
+  },
+  "2025-makeup-1B": {
+    "method": "Left-tailed one-sample Z test",
+    "approach": "Set the null mean to the claimed accuracy and use a lower-tailed alternative. Follow the paper's supplied known-standard-deviation model: calculate z = (sample mean − null mean) / (population standard deviation / √n), compare it with the stated critical value, and express the decision in context.",
+    "subtopic": "Testing a mean with known population standard deviation"
+  },
+  "2025-makeup-1C": {
+    "method": "Time-series component identification",
+    "approach": "Distinguish sustained long-run movement from fixed seasonal repetition, multi-year cycles, and isolated external shocks. Classify each described movement by its duration and whether it recurs regularly.",
+    "subtopic": "Trend, seasonality, cyclicality and irregular variation"
+  },
+  "2025-makeup-2A": {
+    "method": "Two-way ANOVA with replication",
+    "approach": "Calculate grand, factor and cell means, then partition total variation into variety, fertilizer, interaction and within-cell error sums of squares. Divide each sum by its degrees of freedom, compare each main-effect mean square with the within-cell error mean square, and use the appropriate F critical values under the independent, normal, equal-variance error assumptions.",
+    "subtopic": "Variety and fertilizer main effects"
+  },
+  "2025-makeup-2B": {
+    "method": "Hash-based candidate pruning",
+    "approach": "Order each pair consistently, hash every pair occurrence using the supplied function, and sum counts by bucket. Prune buckets below minimum support and retain their complement's pairs as candidates, then distinguish bucket counts from exact pair supports; the supplied singleton set is inconsistent with the stated support threshold, so explicitly state whether you follow that supplied premise.",
+    "subtopic": "Hash buckets versus frequent pairs"
+  },
+  "2025-makeup-2C": {
+    "method": "Forecast-error comparison",
+    "approach": "Define MAE as the mean absolute error and MSE as the mean squared error; relate RMSE to the square root of MSE. Compare the reported measures on the same evaluation data and scale, noting that squared-error measures give greater weight to large errors.",
+    "subtopic": "MAE, MSE and RMSE interpretation"
+  },
+  "2025-makeup-3A": {
+    "method": "Box plot and Spearman rank correlation",
+    "approach": "Sort the observations, state a quartile convention, and use the interquartile range to set Tukey fences and identify whiskers or outliers; treat the printed “75 79” as two observations and disclose the missing comma. Explain the purpose and representativeness of subsetting, then compute rank differences and use Spearman's no-ties formula, ρ = 1 − 6Σd² / [n(n² − 1)].",
+    "subtopic": "Quartiles, data subsets and rank association"
+  },
+  "2025-makeup-3B": {
+    "method": "Support counting and maximality",
+    "approach": "Count transactions containing each requested itemset and divide by the total transaction count. Apply the support threshold, then examine each frequent itemset's proper supersets to distinguish frequency from maximal frequency.",
+    "subtopic": "Frequent and maximal frequent itemsets"
+  },
+  "2025-makeup-3C": {
+    "method": "Simple moving-average forecasting",
+    "approach": "Average the most recent observations in the stated window to forecast the next period, without using an unknown future actual. Explain whether averaging past levels can follow a continuing trend and compare its behavior with a trend-aware method.",
+    "subtopic": "Moving-average lag under trend"
+  },
+  "2025-makeup-4A": {
+    "method": "FP-growth",
+    "approach": "Remove infrequent singleton items, order the retained items consistently by support, and insert ordered transactions into an FP-tree with shared-prefix counts. For each suffix, construct its counted conditional pattern base and conditional tree, recursively grow frequent patterns, and explain how this avoids Apriori's explicit candidate generation.",
+    "subtopic": "FP-trees and conditional pattern mining"
+  },
+  "2025-makeup-4B": {
+    "method": "Single exponential smoothing",
+    "approach": "Starting from the given initial forecast, repeatedly apply F(next) = α × actual(current) + (1 − α) × forecast(current), retaining precision between steps. Compute MAE only over the requested periods with both a forecast and an observed actual.",
+    "subtopic": "Recursive forecasts and forecast evaluation"
+  },
+  "2025-makeup-4C": {
+    "method": "Lift and Kulczynski evaluation",
+    "approach": "Convert the item and co-occurrence counts into supports, then compute lift as joint support divided by the product of marginal supports. Compute Kulczynski as the average of the two directional confidences, and interpret the measures against their reference values without inferring causation.",
+    "subtopic": "Association strength and directional confidence"
+  },
+  "2025-makeup-5A": {
+    "method": "Holt's double exponential smoothing",
+    "approach": "The paper omits the smoothing-parameter labels and uses inconsistent initial-trend subscripts, so explicitly state which constant updates level, which updates trend, and how you initialize and index the states. Update level and trend sequentially, forecast from the latest available states without using the target period's actual, and explain the seasonal component added by triple exponential smoothing.",
+    "subtopic": "Level and trend updates with initialization assumptions"
+  },
+  "2025-makeup-5B": {
+    "method": "Closed and maximal pattern mining",
+    "approach": "Enumerate itemsets meeting the support-count threshold. Test closedness by checking for a proper superset with equal support and maximality by checking for any frequent proper superset, then explain the different information retained by these compact pattern representations.",
+    "subtopic": "Closed versus maximal frequent itemsets"
+  },
+  "2025-makeup-5C": {
+    "method": "Equal-width and equal-frequency binning",
+    "approach": "For equal-width bins, divide the observed range by the requested bin count and state endpoint-inclusion rules; for equal-frequency bins, sort the data and split observations into similarly sized groups. Compare how their histograms show concentration and skew, remembering that unequal-width bins require density rather than raw count heights for comparable areas.",
+    "subtopic": "Discretization and histogram interpretation"
+  }
+}

@@ -1,0 +1,448 @@
+{
+  "id": "m2",
+  "number": 2,
+  "title": "Data Exploration",
+  "topics": [
+    "Observations and variables",
+    "Measurement scales",
+    "Central tendency",
+    "Distribution and variation",
+    "Confidence intervals",
+    "Preparing data tables",
+    "Visualizing relationships",
+    "Correlation and rank association",
+    "Comparing groups",
+    "Categorical association"
+  ],
+  "tests": [
+    {
+      "id": "m2-t1",
+      "title": "Test 1: Understanding and summarizing data",
+      "kind": "concept",
+      "questions": [
+        {
+          "id": "m2-t1-q1",
+          "type": "short",
+          "prompt": "In a table with one row per car and columns for weight, fuel efficiency, and origin, identify the observations and variables.",
+          "answer": "Each car is an observation. Weight, fuel efficiency, and origin are variables.",
+          "explanation": "Rows describe the individual entities; columns record attributes across those entities.",
+          "difficulty": "easy",
+          "topic": "Observations and variables",
+          "source": "DA-Mod-2.pptx slide 4"
+        },
+        {
+          "id": "m2-t1-q2",
+          "type": "mcq",
+          "prompt": "Which variable is continuous?",
+          "answer": "Measured body weight",
+          "explanation": "Weight can take values throughout a measurement range. The other options are counts or categories.",
+          "difficulty": "easy",
+          "topic": "Observations and variables",
+          "source": "DA-Mod-2.pptx slide 8",
+          "options": [
+            "Number of parked cars",
+            "Blood group",
+            "Measured body weight",
+            "Number of defects"
+          ]
+        },
+        {
+          "id": "m2-t1-q3",
+          "type": "short",
+          "prompt": "Classify blood group, ordered satisfaction level, Celsius temperature, and weight in kilograms by measurement scale.",
+          "answer": "Blood group: nominal. Satisfaction: ordinal. Celsius temperature: interval. Weight: ratio.",
+          "explanation": "Nominal categories lack order; ordinal categories have order. Interval values have comparable differences. Ratio values also have a meaningful zero.",
+          "difficulty": "easy",
+          "topic": "Measurement scales",
+          "source": "DA-Mod-2.pptx slide 10 | DA-Mod-2.pptx slide 11"
+        },
+        {
+          "id": "m2-t1-q4",
+          "type": "short",
+          "prompt": "Why should a customer ID usually be excluded as a numeric measurement in analysis?",
+          "answer": "Its numbers identify records rather than measure a meaningful quantity.",
+          "explanation": "Arithmetic differences between identifiers do not represent customer similarity. Keep IDs for linking records, not as ordinary measured predictors.",
+          "difficulty": "easy",
+          "topic": "Observations and variables",
+          "source": "DA-Mod-2.pptx slide 12"
+        },
+        {
+          "id": "m2-t1-q5",
+          "type": "short",
+          "prompt": "Why should units and derivation notes accompany a variable?",
+          "answer": "They explain what values mean and how to compare or combine them correctly.",
+          "explanation": "A weight column in pounds cannot be merged directly with one in kilograms without conversion. A derived fraction also needs its denominator defined.",
+          "difficulty": "easy",
+          "topic": "Observations and variables",
+          "source": "DA-Mod-2.pptx slide 13"
+        },
+        {
+          "id": "m2-t1-q6",
+          "type": "mcq",
+          "prompt": "Which measure of central tendency is directly meaningful for unordered categories such as blood group?",
+          "answer": "Mode",
+          "explanation": "The mode is the most frequent category. Means and numerical medians require more structure than unordered labels provide.",
+          "difficulty": "easy",
+          "topic": "Central tendency",
+          "source": "DA-Mod-2.pptx slide 18",
+          "options": [
+            "Arithmetic mean",
+            "Mode",
+            "Standard deviation",
+            "Range"
+          ]
+        },
+        {
+          "id": "m2-t1-q7",
+          "type": "short",
+          "prompt": "Why can the median be more useful than the mean for a numeric dataset containing a very large outlier?",
+          "answer": "The median depends on ordered position and is less affected by the magnitude of an extreme value.",
+          "explanation": "The mean includes every value in its sum, so a large outlier can pull it far from the bulk of the data.",
+          "difficulty": "easy",
+          "topic": "Central tendency",
+          "source": "DA-Mod-2.pptx slide 19"
+        },
+        {
+          "id": "m2-t1-q8",
+          "type": "mcq",
+          "prompt": "A distribution has a long tail toward larger values. What is its skew direction?",
+          "answer": "Positive or right skew",
+          "explanation": "Skew direction follows the longer tail, not the side containing most observations.",
+          "difficulty": "easy",
+          "topic": "Distribution and variation",
+          "source": "DA-Mod-2.pptx slide 50",
+          "options": [
+            "Positive or right skew",
+            "Negative or left skew",
+            "Necessarily zero skew",
+            "Necessarily bimodal"
+          ]
+        },
+        {
+          "id": "m2-t1-q9",
+          "type": "short",
+          "prompt": "What does a bimodal histogram suggest about the distribution?",
+          "answer": "It has two concentrations or peaks of values.",
+          "explanation": "Two peaks may indicate subgroups worth investigating. A histogram alone does not identify their cause.",
+          "difficulty": "easy",
+          "topic": "Distribution and variation",
+          "source": "DA-Mod-2.pptx slide 27"
+        },
+        {
+          "id": "m2-t1-q10",
+          "type": "short",
+          "prompt": "What does the box between the first and third quartiles represent in a box plot?",
+          "answer": "The middle half of the ordered observations.",
+          "explanation": "The first quartile marks the lower quarter and the third quartile the upper quarter; their difference is the interquartile range.",
+          "difficulty": "easy",
+          "topic": "Distribution and variation",
+          "source": "DA-Mod-2.pptx slide 38"
+        },
+        {
+          "id": "m2-t1-q11",
+          "type": "short",
+          "prompt": "The course uses excess kurtosis when the normal reference value is zero. What does a positive excess kurtosis suggest?",
+          "answer": "Heavier tails than the normal reference, with greater potential for extreme observations.",
+          "explanation": "State the convention: ordinary kurtosis has normal reference 3, whereas excess kurtosis subtracts 3. A tail-shape summary alone does not prove normality.",
+          "difficulty": "medium",
+          "topic": "Distribution and variation",
+          "source": "DA-Mod-2.pptx slide 54"
+        },
+        {
+          "id": "m2-t1-q12",
+          "type": "short",
+          "prompt": "Give the repeated-sampling interpretation of a 95% confidence interval procedure.",
+          "answer": "Over many repetitions, about 95% of intervals constructed by that procedure would contain the fixed population parameter.",
+          "explanation": "The percentage describes the long-run coverage of the method. It is not a statement that 95% of observations lie inside one interval.",
+          "difficulty": "medium",
+          "topic": "Confidence intervals",
+          "source": "DA-Mod-2.pptx slide 63"
+        }
+      ]
+    },
+    {
+      "id": "m2-t2",
+      "title": "Test 2: Preparing tables and choosing relationship methods",
+      "kind": "concept",
+      "questions": [
+        {
+          "id": "m2-t2-q1",
+          "type": "short",
+          "prompt": "A Company column contains 'GE', 'G.E.', and 'General Electric Company'. What preparation step is needed before counting companies?",
+          "answer": "Standardize the labels for the same entity.",
+          "explanation": "Without consistent naming, one company is split into several categories and its frequency is understated.",
+          "difficulty": "easy",
+          "topic": "Preparing data tables",
+          "source": "DA-Mod-2.pptx slide 68"
+        },
+        {
+          "id": "m2-t2-q2",
+          "type": "short",
+          "prompt": "Should every outlier be deleted? Explain a suitable first response.",
+          "answer": "No. Investigate its origin, units, and measurement quality before deciding how to handle it.",
+          "explanation": "An extreme value can be an error or a legitimate, informative observation. Automatic deletion can remove useful evidence.",
+          "difficulty": "medium",
+          "topic": "Preparing data tables",
+          "source": "DA-Mod-2.pptx slide 68"
+        },
+        {
+          "id": "m2-t2-q3",
+          "type": "short",
+          "prompt": "Give two candidates for removal when preparing a data table, and explain why removal needs context.",
+          "answer": "A constant variable and a variable with excessive missing values are candidates.",
+          "explanation": "A constant cannot distinguish observations. Missingness may limit analysis, but removal can discard useful context or introduce bias, so assess its consequences.",
+          "difficulty": "medium",
+          "topic": "Preparing data tables",
+          "source": "DA-Mod-2.pptx slide 70"
+        },
+        {
+          "id": "m2-t2-q4",
+          "type": "short",
+          "prompt": "Why normalize age and credit limit before a method that is sensitive to numerical scale?",
+          "answer": "To prevent the larger numerical range of credit limit from dominating solely because of its units.",
+          "explanation": "Normalization changes scales so the method can compare variables on the intended basis. It does not establish which variable is more important.",
+          "difficulty": "easy",
+          "topic": "Preparing data tables",
+          "source": "DA-Mod-2.pptx slide 71"
+        },
+        {
+          "id": "m2-t2-q5",
+          "type": "short",
+          "prompt": "Contrast ordinal encoding of low/medium/high with dummy encoding of an unordered category.",
+          "answer": "Ordinal encoding can preserve order using codes such as 0, 1, 2. Dummy encoding creates a separate presence/absence column for each category.",
+          "explanation": "Ordered levels have a meaningful ranking. Arbitrary numbers for unordered categories can create a false sense of order or distance.",
+          "difficulty": "easy",
+          "topic": "Preparing data tables",
+          "source": "DA-Mod-2.pptx slide 77"
+        },
+        {
+          "id": "m2-t2-q6",
+          "type": "short",
+          "prompt": "When might you bin a continuous variable, and what information is lost?",
+          "answer": "Bin it when a method requires categories or when the measurement precision supports only broad groups. Exact values and within-bin differences are lost.",
+          "explanation": "The resulting categories make some analyses possible but provide a coarser representation of the original measurements.",
+          "difficulty": "medium",
+          "topic": "Preparing data tables",
+          "source": "DA-Mod-2.pptx slide 78"
+        },
+        {
+          "id": "m2-t2-q7",
+          "type": "short",
+          "prompt": "Name a transformation useful for strictly positive, strongly right-skewed data. Does it guarantee a normal distribution?",
+          "answer": "A logarithmic transformation can help. It does not guarantee normality.",
+          "explanation": "Logs compress large positive values more strongly than small ones. Inspect the transformed distribution and check the relevant assumptions afterward.",
+          "difficulty": "medium",
+          "topic": "Preparing data tables",
+          "source": "DA-Mod-2.pptx slide 76"
+        },
+        {
+          "id": "m2-t2-q8",
+          "type": "short",
+          "prompt": "Why might an analyst create subsets of a large dataset, and what representativeness concern remains?",
+          "answer": "Subsets can reduce computation or support simpler models for meaningful groups. A sampled subset should still represent the target population.",
+          "explanation": "A small convenient subset may omit important groups. Random sampling or justified grouping should reflect the analysis objective.",
+          "difficulty": "medium",
+          "topic": "Preparing data tables",
+          "source": "DA-Mod-2.pptx slide 80"
+        },
+        {
+          "id": "m2-t2-q9",
+          "type": "short",
+          "prompt": "Choose a display for each task: inspect two continuous variables; compare distributions across categories; count combinations of two categorical variables.",
+          "answer": "Scatterplot; grouped box plots; contingency table.",
+          "explanation": "A scatterplot preserves paired numeric values, box plots compare within-group distributions, and a contingency table counts category combinations.",
+          "difficulty": "medium",
+          "topic": "Visualizing relationships",
+          "source": "DA-Mod-2.pptx slide 88 | DA-Mod-2.pptx slide 96 | DA-Mod-2.pptx slide 110"
+        },
+        {
+          "id": "m2-t2-q10",
+          "type": "short",
+          "prompt": "How do a line graph, normalized stacked bar chart, and bubble chart emphasize different information?",
+          "answer": "A line graph shows ordered change, often over time. A normalized stacked bar chart compares composition. A bubble chart uses position plus size or color to show additional variables.",
+          "explanation": "Choose the visual encoding to match the relationship being studied; adding dimensions is useful only when the result remains readable.",
+          "difficulty": "medium",
+          "topic": "Visualizing relationships",
+          "source": "DA-Mod-2.pptx slide 98 | DA-Mod-2.pptx slide 102 | DA-Mod-2.pptx slide 105"
+        },
+        {
+          "id": "m2-t2-q11",
+          "type": "short",
+          "prompt": "Match the relationship to its method: linear association between numeric variables; association between rankings; difference between two independent means; difference among several means; association between categorical variables.",
+          "answer": "Pearson correlation; Kendall's tau; independent-samples t-test; one-way ANOVA; chi-square test of independence.",
+          "explanation": "The variable types and inferential question determine the method. Verify each method's assumptions rather than choosing solely by the number of columns.",
+          "difficulty": "medium",
+          "topic": "Correlation and rank association",
+          "source": "DA-Mod-2.pptx slide 125"
+        },
+        {
+          "id": "m2-t2-q12",
+          "type": "long",
+          "prompt": "A one-way ANOVA rejects equal population means for three independent groups. What can and cannot be concluded from that result alone?",
+          "answer": "There is evidence that at least one population mean differs. It does not establish that every pair differs or identify which pairs differ.",
+          "explanation": "The ANOVA alternative is not 'all means are different'. Additional comparisons are needed to identify specific differences. Independence, approximate normality of errors, and appropriate variance assumptions also matter.",
+          "difficulty": "hard",
+          "topic": "Comparing groups",
+          "source": "DA-Mod-2.pptx slide 158"
+        }
+      ]
+    },
+    {
+      "id": "m2-t3",
+      "title": "Test 3: Numerical exploration and relationship metrics",
+      "kind": "numerical",
+      "questions": [
+        {
+          "id": "m2-t3-q1",
+          "type": "numerical",
+          "prompt": "Original practice data: 2, 4, 4, 6, 9. Find the mean, median, and mode.",
+          "answer": "Mean = 5; median = 4; mode = 4.",
+          "explanation": "The sum is 25 across 5 observations, so the mean is 5. The third sorted observation is 4, and 4 is also the most frequent value.",
+          "difficulty": "easy",
+          "topic": "Central tendency",
+          "source": "DA-Mod-2.pptx slide 18 | DA-Mod-2.pptx slide 19 | DA-Mod-2.pptx slide 20"
+        },
+        {
+          "id": "m2-t3-q2",
+          "type": "numerical",
+          "prompt": "Original practice data: 2, 4, 6. Calculate the sample variance and sample standard deviation.",
+          "answer": "Sample variance = 4; sample standard deviation = 2.",
+          "explanation": "The mean is 4. Squared deviations sum to 8. Divide by n - 1 = 2 to get variance 4; its square root is 2.",
+          "difficulty": "easy",
+          "topic": "Distribution and variation",
+          "source": "DA-Mod-2.pptx slide 41 | DA-Mod-2.pptx slide 42"
+        },
+        {
+          "id": "m2-t3-q3",
+          "type": "numerical",
+          "prompt": "Original practice data: 1, 3, 5, 7, 9, 11, 13, 15, 17. Use the median-of-halves rule, excluding the overall median from both halves. Find Q1, median, Q3, and IQR.",
+          "answer": "Q1 = 4; median = 9; Q3 = 14; IQR = 10.",
+          "explanation": "The middle observation is 9. The lower half is 1, 3, 5, 7, so Q1 = (3 + 5)/2. The upper half is 11, 13, 15, 17, so Q3 = (13 + 15)/2. IQR = 14 - 4.",
+          "difficulty": "medium",
+          "topic": "Distribution and variation",
+          "source": "DA-Mod-2.pptx slide 35"
+        },
+        {
+          "id": "m2-t3-q4",
+          "type": "numerical",
+          "prompt": "Original practice scenario: a score is 85, the mean is 75, and the standard deviation is 5. Calculate its z-score.",
+          "answer": "z = 2.",
+          "explanation": "Use z = (x - mean)/SD = (85 - 75)/5. The score is two standard deviations above the mean.",
+          "difficulty": "easy",
+          "topic": "Distribution and variation",
+          "source": "DA-Mod-2.pptx slide 47"
+        },
+        {
+          "id": "m2-t3-q5",
+          "type": "numerical",
+          "prompt": "Original practice scenario: an independent random sample has n = 100 and mean = 50. The population standard deviation is known to be 10. Using z = 1.96, calculate a 95% confidence interval for the population mean. Give the endpoints to two decimal places.",
+          "answer": "Lower endpoint = 48.04; upper endpoint = 51.96.",
+          "explanation": "The standard error is 10/sqrt(100) = 1. The margin is 1.96 × 1 = 1.96, so the interval is 50 ± 1.96. Use the stated z critical value under the normal or large-sample approximation.",
+          "difficulty": "medium",
+          "topic": "Confidence intervals",
+          "source": "DA-Mod-2.pptx slide 66"
+        },
+        {
+          "id": "m2-t3-q6",
+          "type": "numerical",
+          "prompt": "Original practice scenario: map x = 30 from the range [10, 50] to [-1, 1] using min-max normalization.",
+          "answer": "Normalized value = 0.",
+          "explanation": "Compute -1 + ((30 - 10)/(50 - 10)) × (1 - (-1)) = -1 + 1 = 0.",
+          "difficulty": "easy",
+          "topic": "Preparing data tables",
+          "source": "DA-Mod-2.pptx slide 72"
+        },
+        {
+          "id": "m2-t3-q7",
+          "type": "numerical",
+          "prompt": "Original practice data: 5, 12, 18, 22, 28, 31. Find histogram frequencies for [0, 10), [10, 20), [20, 30), [30, 40), in that order. Each left endpoint is included and each right endpoint excluded.",
+          "answer": "Frequencies = 1, 2, 2, 1.",
+          "explanation": "The first bin contains 5; the second 12 and 18; the third 22 and 28; the fourth 31. The counts sum to all six observations.",
+          "difficulty": "easy",
+          "topic": "Distribution and variation",
+          "source": "DA-Mod-2.pptx slide 26"
+        },
+        {
+          "id": "m2-t3-q8",
+          "type": "numerical",
+          "prompt": "Original paired practice data: X = [1, 2, 3, 4], Y = [2, 4, 3, 5]. Calculate Pearson's correlation coefficient.",
+          "answer": "r = 0.8.",
+          "explanation": "Both centered sums of squares are 5. The centered cross-product sum is 4. Thus r = 4/sqrt(5 × 5) = 0.8, a positive linear association.",
+          "difficulty": "medium",
+          "topic": "Correlation and rank association",
+          "source": "DA-Mod-2.pptx slide 126"
+        },
+        {
+          "id": "m2-t3-q9",
+          "type": "numerical",
+          "prompt": "Original practice rankings: X = [1, 2, 3, 4], Y = [1, 3, 2, 4]. There are no ties. Calculate concordant pairs C, discordant pairs D, and Kendall's tau-a. Round tau-a to four decimals.",
+          "answer": "C = 5; D = 1; tau-a = 0.6667.",
+          "explanation": "There are 4 × 3 / 2 = 6 pairs. Only the middle two observations are reversed. Therefore tau-a = (5 - 1)/6 = 2/3.",
+          "difficulty": "medium",
+          "topic": "Correlation and rank association",
+          "source": "DA-Mod-2.pptx slide 132"
+        },
+        {
+          "id": "m2-t3-q10",
+          "type": "numerical",
+          "prompt": "Original practice scenario: n = 16, sample mean = 33, sample SD = 4, and null mean = 30. Calculate the one-sample t-statistic and its degrees of freedom.",
+          "answer": "t = 3; df = 15.",
+          "explanation": "The estimated standard error is 4/sqrt(16) = 1. Therefore t = (33 - 30)/1 = 3, with n - 1 = 15 degrees of freedom. A decision would additionally require a tail direction and significance level.",
+          "difficulty": "medium",
+          "topic": "Comparing groups",
+          "source": "DA-Mod-2.pptx slide 143"
+        },
+        {
+          "id": "m2-t3-q11",
+          "type": "numerical",
+          "prompt": "Original practice scenario: two independent approximately normal groups have n1 = n2 = 8, means 10 and 14, and sample SDs 2 and 2. Assume equal population variances. Calculate the pooled t-statistic using mean1 - mean2 and its degrees of freedom.",
+          "answer": "t = -4; df = 14.",
+          "explanation": "The pooled variance is ((7 × 4) + (7 × 4))/14 = 4. The standard error is sqrt(4 × (1/8 + 1/8)) = 1. Thus t = (10 - 14)/1 = -4 and df = 8 + 8 - 2 = 14.",
+          "difficulty": "medium",
+          "topic": "Comparing groups",
+          "source": "DA-Mod-2.pptx slide 146"
+        },
+        {
+          "id": "m2-t3-q12",
+          "type": "numerical",
+          "prompt": "Original practice scenario: independent groups have means 20 and 30, sample SDs 2 and 8, and sample sizes 10 and 15. Without assuming equal variances, calculate Welch's t-statistic using mean1 - mean2. Round to four decimals.",
+          "answer": "t = -4.6291.",
+          "explanation": "Welch's standard error is sqrt(2^2/10 + 8^2/15) = sqrt(4.6666667). Divide the mean difference -10 by this standard error. This question requests the statistic only, not a test decision.",
+          "difficulty": "hard",
+          "topic": "Comparing groups",
+          "source": "DA-Mod-2.pptx slide 147"
+        },
+        {
+          "id": "m2-t3-q13",
+          "type": "numerical",
+          "prompt": "Original practice data for one-way ANOVA: A = [1, 2, 3], B = [4, 5, 6], C = [7, 8, 9]. Compute F and the numerator and denominator degrees of freedom.",
+          "answer": "F = 27; numerator df = 2; denominator df = 6.",
+          "explanation": "Group means are 2, 5, and 8; the grand mean is 5. Between-group SS = 3(9 + 0 + 9) = 54. Within-group SS = 2 + 2 + 2 = 6. MSB = 54/2 = 27 and MSW = 6/6 = 1, so F = 27.",
+          "difficulty": "hard",
+          "topic": "Comparing groups",
+          "source": "DA-Mod-2.pptx slide 162"
+        },
+        {
+          "id": "m2-t3-q14",
+          "type": "numerical",
+          "prompt": "Original practice contingency table: rows A and B each total 40. Counts across columns Yes and No are A: [30, 10], B: [10, 30]. Compute Pearson's chi-square statistic without a continuity correction, and its degrees of freedom.",
+          "answer": "Chi-square = 20; df = 1.",
+          "explanation": "Both column totals are 40 and the grand total is 80. Every expected count is 40 × 40/80 = 20. Four contributions of (10^2)/20 give 20. The degrees of freedom are (2 - 1)(2 - 1) = 1.",
+          "difficulty": "medium",
+          "topic": "Categorical association",
+          "source": "DA-Mod-2.pptx slide 169 | DA-Mod-2.pptx slide 171"
+        },
+        {
+          "id": "m2-t3-q15",
+          "type": "numerical",
+          "prompt": "Original paired practice data: X = [1, 2, 3], Y = [2, 4, 6]. Calculate sample covariance, dividing by n - 1.",
+          "answer": "Sample covariance = 2.",
+          "explanation": "The means are 2 and 4. The centered cross-products are 2, 0, and 2, which sum to 4. Divide by 3 - 1 = 2 to obtain covariance 2.",
+          "difficulty": "medium",
+          "topic": "Correlation and rank association",
+          "source": "DA-Mod-2.pptx slide 126"
+        }
+      ]
+    }
+  ]
+}

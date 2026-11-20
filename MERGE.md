@@ -36,11 +36,44 @@ Tag data comes from the Python pipeline at the repo root (`scrape.py` → `extra
 `get-subject-tags.ts`. Each paper in the data carries `pdf_path`, the same `/authoritative/...pdf`
 path your site serves, if you'd rather join tags to your own paper records.
 
+## Update: CSS 2103 Data Analytics and the module map
+
+If you already merged the question map, **re-copy `site/features/question-map/` over your copy. No page changes are
+needed.** Your existing two lines already render CSS 2103 through `getSubjectTags`.
+
+What changed inside the folder:
+- `data/css-2103.json` holds the 30 questions from the two CSS 2103 end-sem papers (Regular Nov/Dec 2025 and
+  Makeup Dec 2025/Jan 2026). Each is tagged with a module and a topic. No answers are included.
+- `get-subject-tags.ts` registers `"CSS 2103"`.
+- `types.ts` gains optional fields only: `module`, `method`, `approach`, `text_html`, and a top-level `modules` list.
+  `difficulty`, `reason` and `leetcode` are now optional because CSS 2103 has no difficulty tags. Existing data is
+  still valid.
+- `question-map.tsx`:
+  - When the questions carry a `module`, the topic map becomes a module map. There is one bar per module, labelled
+    "Module N · title" with its question count.
+  - Clicking a bar shows only that module's questions. Clicking it again, or the **All modules** chip, clears it.
+  - Each card shows its topic as a chip, and has a **Reveal test** button. It is a hint that shows `method`, with
+    `approach` below in smaller text, and stays hidden until pressed.
+  - Markdown pipe tables in the question text render as tables.
+  - When a subject has no difficulty tags, the bars are single-colour and the difficulty chips are hidden.
+  - CSS 2101 renders exactly as before.
+
+Paste this to Claude Code in your repo:
+
+> Update the "question map" feature from `<path-to>/qp-tagger/site/features/question-map/`. Replace this repo's copy of
+> that folder with it, keeping the files unchanged (fix the import alias only if this repo doesn't use `@/`). Don't
+> change the subject page or anything else. Then run the type check and lint. Open the CSS 2101 subject page and
+> confirm it looks the same as before. Open the CSS 2103 subject page and confirm all of these:
+> - "How often each module is asked" shows five module bars;
+> - clicking a bar filters to that module;
+> - Reveal test shows the method;
+> - it works in light and dark mode.
+
 ## What's inside
 | File | What it does |
 |---|---|
-| `question-map.tsx` | Client component: topic frequency bars (filter), difficulty chips, question cards with LeetCode links |
+| `question-map.tsx` | Client component: topic frequency bars (filter), difficulty chips, question cards with LeetCode links. When questions have modules, it shows a module map (click a module to practise it) and a Reveal test hint on each card. |
 | `get-subject-tags.ts` | `getSubjectTags(code)`: returns the tag data for a subject code, or null |
 | `types.ts` | Data types (schema 1) |
-| `data/*.json` | Tagged questions per subject |
+| `data/*.json` | Tagged questions per subject (`css-2101.json`, `css-2103.json`) |
 | `index.ts` | Public exports |

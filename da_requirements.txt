@@ -1,0 +1,8 @@
+# Root-only authoring tools. No packages are required by the copied site feature.
+# python -m pip install --target .artifacts/da-tools -r da_requirements.txt
+markdown-it-py==4.0.0
+bleach==6.3.0
+latex2mathml==3.78.1
+pypdf==6.19.0
+pymupdf==2.0
+requests==2.33.0

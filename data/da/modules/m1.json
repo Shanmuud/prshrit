@@ -1,0 +1,260 @@
+{
+  "id": "m1",
+  "number": 1,
+  "title": "Introduction to Data Analytics",
+  "topics": [
+    "Data and data types",
+    "Sources of data",
+    "Analytics workflow",
+    "Descriptive analytics",
+    "Predictive analytics",
+    "Prescriptive analytics",
+    "Analytics case studies"
+  ],
+  "tests": [
+    {
+      "id": "m1-t1",
+      "title": "Test 1: Data sources and the analytics workflow",
+      "kind": "concept",
+      "questions": [
+        {
+          "id": "m1-t1-q1",
+          "type": "short",
+          "prompt": "What is data, and why does an organization collect it?",
+          "answer": "Data consists of recorded facts, measurements, and observations. Organizations collect it to support decisions and solve problems.",
+          "explanation": "For example, sales transactions help a retailer identify poorly performing products and customer preferences.",
+          "difficulty": "easy",
+          "topic": "Data and data types",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 7"
+        },
+        {
+          "id": "m1-t1-q2",
+          "type": "mcq",
+          "prompt": "Which is an example of semi-structured data?",
+          "answer": "A JSON document",
+          "explanation": "JSON supplies keys and a nested structure without requiring a fixed rectangular table.",
+          "difficulty": "easy",
+          "topic": "Data and data types",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 8",
+          "options": [
+            "A JSON document",
+            "A raw audio recording",
+            "A photograph",
+            "A fixed spreadsheet of marks"
+          ]
+        },
+        {
+          "id": "m1-t1-q3",
+          "type": "short",
+          "prompt": "Classify a student marks table, a video recording, and an XML document as structured, unstructured, or semi-structured.",
+          "answer": "Marks table: structured. Video: unstructured. XML: semi-structured.",
+          "explanation": "A table uses fixed rows and columns. Video lacks that tabular schema. XML has tags that organize its content.",
+          "difficulty": "easy",
+          "topic": "Data and data types",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 8"
+        },
+        {
+          "id": "m1-t1-q4",
+          "type": "short",
+          "prompt": "A survey asks, 'Don't you agree our excellent service is worth the price?' Identify the design problem and suggest a neutral replacement.",
+          "answer": "The question is leading. Ask, 'How would you rate the value for money of our service?'",
+          "explanation": "The original wording encourages a favorable answer. Neutral wording and an appropriate sampling method reduce survey bias.",
+          "difficulty": "medium",
+          "topic": "Sources of data",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 9"
+        },
+        {
+          "id": "m1-t1-q5",
+          "type": "mcq",
+          "prompt": "In the double-blind experiment described in the course, who is unaware of treatment allocation?",
+          "answer": "Both the patient and the doctor",
+          "explanation": "Keeping both parties unaware helps reduce expectations that could influence treatment or observations.",
+          "difficulty": "easy",
+          "topic": "Sources of data",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 10",
+          "options": [
+            "Only the patient",
+            "Only the doctor",
+            "Both the patient and the doctor",
+            "Neither the patient nor the doctor"
+          ]
+        },
+        {
+          "id": "m1-t1-q6",
+          "type": "short",
+          "prompt": "How do operational data and a data warehouse differ in purpose?",
+          "answer": "Operational data records routine activities; a data warehouse brings together historical and operational data for analysis and decisions.",
+          "explanation": "CRM transactions or sensor readings arise from ongoing work. A warehouse combines sources so analysts can examine them together over time.",
+          "difficulty": "easy",
+          "topic": "Sources of data",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 11"
+        },
+        {
+          "id": "m1-t1-q7",
+          "type": "short",
+          "prompt": "Give one internal and one external source for studying a retailer's sales.",
+          "answer": "Internal: the retailer's sales records. External: a government economic dataset or market research report.",
+          "explanation": "Internal sources originate within the organization. External sources supply information from outside it.",
+          "difficulty": "easy",
+          "topic": "Sources of data",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 12"
+        },
+        {
+          "id": "m1-t1-q8",
+          "type": "short",
+          "prompt": "Put the four main stages of an analytics project in order.",
+          "answer": "Problem definition and planning → data preparation → analysis → deployment.",
+          "explanation": "First define the objective and deliverables. Then prepare suitable data, apply analysis methods, and communicate or use the results.",
+          "difficulty": "easy",
+          "topic": "Analytics workflow",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 13"
+        },
+        {
+          "id": "m1-t1-q9",
+          "type": "short",
+          "prompt": "A university merges attendance and LMS records, removes duplicates, and standardizes score formats. Which project stage is this?",
+          "answer": "Data preparation",
+          "explanation": "These operations collect, integrate, clean, and transform the records before modeling or interpretation.",
+          "difficulty": "easy",
+          "topic": "Analytics workflow",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 15"
+        },
+        {
+          "id": "m1-t1-q10",
+          "type": "long",
+          "prompt": "A city wants to reduce congestion. Describe a useful deliverable for each of the four analytics project stages.",
+          "answer": "Planning: define congestion and travel-time objectives. Preparation: integrate GPS, sensor, and signal records. Analysis: compare traffic-flow models or simulated signal plans. Deployment: implement and monitor the chosen signal-control plan.",
+          "explanation": "Each stage produces something needed by the next. A model alone does not change traffic; deployment puts its results into operation and checks the intended outcome.",
+          "difficulty": "medium",
+          "topic": "Analytics workflow",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 19"
+        }
+      ]
+    },
+    {
+      "id": "m1-t2",
+      "title": "Test 2: Choosing and applying analytics",
+      "kind": "concept",
+      "questions": [
+        {
+          "id": "m1-t2-q1",
+          "type": "mcq",
+          "prompt": "A dashboard summarizes last month's product sales. Which type of analytics is it using?",
+          "answer": "Descriptive analytics",
+          "explanation": "It summarizes observed historical data rather than forecasting an event or selecting an optimal action.",
+          "difficulty": "easy",
+          "topic": "Descriptive analytics",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 23",
+          "options": [
+            "Descriptive analytics",
+            "Predictive analytics",
+            "Prescriptive analytics",
+            "Randomized experimentation"
+          ]
+        },
+        {
+          "id": "m1-t2-q2",
+          "type": "short",
+          "prompt": "Can a descriptive association between attendance and grades establish that attendance caused the grade difference? Explain.",
+          "answer": "No. It describes a pattern but does not by itself establish causation.",
+          "explanation": "Other factors may differ between the groups. Descriptive summaries reveal what was observed; a causal conclusion needs an appropriate study design and evidence.",
+          "difficulty": "medium",
+          "topic": "Descriptive analytics",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 23"
+        },
+        {
+          "id": "m1-t2-q3",
+          "type": "mcq",
+          "prompt": "A model estimates the probability that a customer will leave next month. Which analytics category best describes this output?",
+          "answer": "Predictive analytics",
+          "explanation": "The output estimates a future event, customer churn.",
+          "difficulty": "easy",
+          "topic": "Predictive analytics",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 25",
+          "options": [
+            "Descriptive analytics",
+            "Predictive analytics",
+            "Prescriptive analytics",
+            "Data cleaning"
+          ]
+        },
+        {
+          "id": "m1-t2-q4",
+          "type": "short",
+          "prompt": "Why are historical observations useful when building a predictive model?",
+          "answer": "They provide examples of relationships between known inputs and outcomes that the model can use to estimate future outcomes.",
+          "explanation": "A model can learn patterns from past cases, such as characteristics associated with churn. Predictions remain estimates, not guarantees.",
+          "difficulty": "medium",
+          "topic": "Predictive analytics",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 35"
+        },
+        {
+          "id": "m1-t2-q5",
+          "type": "short",
+          "prompt": "Match a technique to each task: predicting a continuous sales value; estimating a binary churn probability; classifying records using interpretable branching rules.",
+          "answer": "Regression; logistic regression; decision tree.",
+          "explanation": "The output type matters. Continuous values, event probabilities, and branch-based classifications require different model forms.",
+          "difficulty": "easy",
+          "topic": "Predictive analytics",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 27"
+        },
+        {
+          "id": "m1-t2-q6",
+          "type": "mcq",
+          "prompt": "Which task is prescriptive analytics?",
+          "answer": "Choose delivery routes that minimize cost subject to delivery constraints",
+          "explanation": "Prescriptive analytics selects actions using an objective and constraints, informed by the available data and predictions.",
+          "difficulty": "easy",
+          "topic": "Prescriptive analytics",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 28",
+          "options": [
+            "Report yesterday's delivery cost",
+            "Estimate tomorrow's parcel volume",
+            "Choose delivery routes that minimize cost subject to delivery constraints",
+            "Remove duplicate shipment records"
+          ]
+        },
+        {
+          "id": "m1-t2-q7",
+          "type": "short",
+          "prompt": "Why might targeting customers with the highest purchase probability fail to maximize profit?",
+          "answer": "Purchase probability alone ignores profit per sale, targeting cost, and resource constraints.",
+          "explanation": "Prescriptive analysis compares the value and cost of feasible actions instead of ranking customers solely by how likely they are to buy.",
+          "difficulty": "medium",
+          "topic": "Prescriptive analytics",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 29"
+        },
+        {
+          "id": "m1-t2-q8",
+          "type": "short",
+          "prompt": "What does the DMAIC framework used in Six Sigma stand for?",
+          "answer": "Define, Measure, Analyze, Improve, Control.",
+          "explanation": "The sequence starts with a defined process problem, measures and analyzes it, implements improvements, and controls the resulting process.",
+          "difficulty": "easy",
+          "topic": "Prescriptive analytics",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 31"
+        },
+        {
+          "id": "m1-t2-q9",
+          "type": "long",
+          "prompt": "For a hospital readmission project, give separate descriptive, predictive, and prescriptive outputs.",
+          "answer": "Descriptive: summarize readmission patterns. Predictive: estimate each patient's readmission risk. Prescriptive: choose follow-up care or monitoring plans for patients.",
+          "explanation": "The summary identifies existing patterns; the model estimates future risk; the action plan determines how staff respond to that risk.",
+          "difficulty": "medium",
+          "topic": "Analytics case studies",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 32"
+        },
+        {
+          "id": "m1-t2-q10",
+          "type": "long",
+          "prompt": "Apply descriptive, predictive, and prescriptive analytics to reducing ride-sharing passenger wait times. Include useful input data.",
+          "answer": "Use trip histories, request times and locations, driver availability, and traffic data. Summarize past waiting patterns; predict demand by area and time; select driver allocations and routes to reduce waiting.",
+          "explanation": "The stages answer different questions: where delays occurred, where demand is likely, and how to allocate limited drivers. The final action should be assessed against the wait-time objective.",
+          "difficulty": "hard",
+          "topic": "Analytics case studies",
+          "source": "Module 1- Introduction to Data Analytics.pptx slide 34"
+        }
+      ]
+    }
+  ]
+}
