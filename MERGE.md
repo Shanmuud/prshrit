@@ -52,8 +52,9 @@ What changed inside the folder:
   - When the questions carry a `module`, the topic map becomes a module map. There is one bar per module, labelled
     "Module N · title" with its question count.
   - Clicking a bar shows only that module's questions. Clicking it again, or the **All modules** chip, clears it.
-  - Each card shows its topic as a chip, and has a **Reveal test** button. It is a hint that shows `method`, with
-    `approach` below in smaller text, and stays hidden until pressed.
+  - Each card has a **Reveal test** button. It is a hint that shows `topic · subtopic`, then `method`, with
+    `approach` below in smaller text, and stays hidden until pressed. Cards with a `method` show no topic or
+    subtopic in the card head, so the hint is not given away.
   - Markdown pipe tables in the question text render as tables.
   - When a subject has no difficulty tags, the bars are single-colour and the difficulty chips are hidden.
   - CSS 2101 renders exactly as before.

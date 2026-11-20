@@ -51,11 +51,12 @@ tags, so the bars are single-colour and the difficulty chips are hidden.
 </table>
 
 **Practise one module.** Click a module's bar to see only that module's questions, opened and ready to try. Click the
-bar again or **All modules** to clear the selection; the paper chips still filter. Each card shows its topic as a small
-chip. **Reveal test** is a hint: it shows which test or technique to use, with the approach in smaller text. It is not
-a worked answer and gives no final numbers. Tables in the question text render as real tables.
+bar again or **All modules** to clear the selection; the paper chips still filter. A card shows only the question
+number, paper, marks and question text, because the topic would give the test away. **Reveal test** is a hint: it shows
+the topic and subtopic, then which test or technique to use, with the approach in smaller text. It is not a worked
+answer and gives no final numbers. Tables in the question text render as real tables.
 
-<img src="docs/screenshots/07-css2103-reveal-test.png" alt="Module 3 selected: 6 of 30 questions; question 1B open with Reveal test pressed, showing Two-tailed one-sample z-test and a short approach">
+<img src="docs/screenshots/07-css2103-reveal-test.png" alt="Module 3 selected: 6 of 30 questions; question 1B open with Reveal test pressed, showing the topic, Two-tailed one-sample z-test and a short approach">
 
 <table>
   <tr>

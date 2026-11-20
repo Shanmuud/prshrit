@@ -201,13 +201,20 @@ function QuestionCard({ q, defaultOpen = false }: { q: Row; defaultOpen?: boolea
           Q{q.qno}
           <span className="block text-[11px] text-muted-foreground">{q.paperLabel}</span>
         </span>
-        <span className="min-w-0">
-          <span className="text-sm font-medium">{q.subtopic || q.topic}</span>
-          {q.module != null && q.subtopic && q.topic && (
-            <span className="ml-2 inline-block rounded-full bg-muted px-2 py-0.5 align-middle text-[11px] text-muted-foreground">{q.topic}</span>
-          )}
-          <span className="mt-0.5 line-clamp-2 text-sm text-muted-foreground group-open:hidden">{q.text}</span>
-        </span>
+        {q.method ? (
+          // Cards with a Reveal test hint show no topic or subtopic here, because those give the test away.
+          <span className="min-w-0">
+            <span className="line-clamp-1 text-sm text-muted-foreground group-open:hidden">{firstLine(q.text)}</span>
+          </span>
+        ) : (
+          <span className="min-w-0">
+            <span className="text-sm font-medium">{q.subtopic || q.topic}</span>
+            {q.module != null && q.subtopic && q.topic && (
+              <span className="ml-2 inline-block rounded-full bg-muted px-2 py-0.5 align-middle text-[11px] text-muted-foreground">{q.topic}</span>
+            )}
+            <span className="mt-0.5 line-clamp-2 text-sm text-muted-foreground group-open:hidden">{q.text}</span>
+          </span>
+        )}
         <span className="flex flex-col items-end gap-1">
           {q.difficulty && <span className={`rounded-full px-2 py-0.5 text-xs font-semibold ${DIFF_STYLE[q.difficulty].pill}`}>{q.difficulty}</span>}
           {q.marks != null && <span className="font-mono text-xs text-muted-foreground">{q.marks} marks</span>}
@@ -254,14 +261,19 @@ function QuestionCard({ q, defaultOpen = false }: { q: Row; defaultOpen?: boolea
     <div className="rounded-lg border border-border bg-card">
       {card}
       <div className="border-t border-dashed border-border px-3 py-2.5 sm:px-4">
-        <TestReveal method={q.method} approach={q.approach} />
+        <TestReveal method={q.method} approach={q.approach} topic={[q.topic, q.subtopic].filter(Boolean).join(" · ")} />
       </div>
     </div>
   );
 }
 
+/** First non-empty line of the question, skipping table rows, for the collapsed one-line preview. */
+function firstLine(text: string) {
+  return text.split("\n").find((l) => l.trim() && !TABLE_ROW.test(l))?.trim() ?? text;
+}
+
 /** Hint: which test or technique to use, with the approach in short. Not rendered until revealed. */
-function TestReveal({ method, approach }: { method: string; approach?: string }) {
+function TestReveal({ method, approach, topic }: { method: string; approach?: string; topic?: string }) {
   const [shown, setShown] = useState(false);
   const id = useId();
   return (
@@ -278,6 +290,7 @@ function TestReveal({ method, approach }: { method: string; approach?: string })
       <div id={id} hidden={!shown}>
         {shown && (
           <div className="max-w-prose rounded-md border border-dashed border-primary/40 bg-primary/5 px-3 py-2 text-sm">
+            {topic && <p className="mb-1 text-xs text-muted-foreground">{topic}</p>}
             <p className="font-semibold">{method}</p>
             {approach && <p className="mt-1 whitespace-pre-wrap break-words text-xs leading-relaxed text-muted-foreground">{approach}</p>}
           </div>
